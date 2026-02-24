@@ -100,4 +100,3 @@ pnpm run format
 7. (Optional) Open `db:studio` to inspect and edit data.
 
 If you later add a Next.js application, you can extend this README with a section about running `next dev` / `next start`.
-
