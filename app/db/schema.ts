@@ -15,13 +15,13 @@ export const categories = pgTable(
     slug: varchar("slug", { length: 255 }).notNull(),
     parentId: uuid("parent_id"),
   },
-  (table) => ({
-    parentRef: foreignKey({
+  (table) => [
+    foreignKey({
       columns: [table.parentId],
       foreignColumns: [table.id],
       name: "category_parents",
     }),
-  }),
+  ],
 );
 
 export const posts = pgTable("posts", {
