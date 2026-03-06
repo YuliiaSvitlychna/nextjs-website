@@ -1,21 +1,18 @@
 import "dotenv/config";
-import { drizzle } from "drizzle-orm/node-postgres";
-import { Pool } from "pg";
+import { drizzle } from "drizzle-orm/postgres-js";
+import postgres from "postgres";
 import * as schema from "../app/db/schema";
 import { categories, posts } from "../app/db/schema";
 import { sql } from "drizzle-orm";
 
-const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
-});
+const client = postgres(process.env.DATABASE_URL!);
 
-const db = drizzle(pool, { schema });
+const db = drizzle(client, { schema });
 
 async function main() {
   await db.execute(sql`TRUNCATE TABLE "posts" RESTART IDENTITY CASCADE`);
   await db.execute(sql`TRUNCATE TABLE "categories" RESTART IDENTITY CASCADE`);
 
-  // Корневые категории
   const [tech] = await db
     .insert(categories)
     .values({ title: "Technology", slug: "technology" })
@@ -29,7 +26,6 @@ async function main() {
     .values({ title: "Business", slug: "business" })
     .returning();
 
-  // Вложенные категории (parentId)
   const [frontend] = await db
     .insert(categories)
     .values({
@@ -79,7 +75,6 @@ async function main() {
     })
     .returning();
 
-  // Посты: корневые и вложенные категории
   await db.insert(posts).values([
     {
       title: "Hello Drizzle",
