@@ -6,6 +6,7 @@ import {
   uuid,
   varchar,
 } from "drizzle-orm/pg-core";
+import { type InferSelectModel, type InferInsertModel } from "drizzle-orm";
 
 export const categories = pgTable(
   "categories",
@@ -35,3 +36,8 @@ export const posts = pgTable("posts", {
   createdAt: timestamp("created_at").defaultNow().notNull(),
   updatedAt: timestamp("updated_at").defaultNow().notNull(),
 });
+
+export type Category = InferSelectModel<typeof categories>;
+export type NewCategory = InferInsertModel<typeof categories>;
+export type Post = InferSelectModel<typeof posts>;
+export type NewPost = InferInsertModel<typeof posts>;
