@@ -16,4 +16,9 @@ CREATE TABLE "posts" (
 );
 --> statement-breakpoint
 ALTER TABLE "categories" ADD CONSTRAINT "category_parents" FOREIGN KEY ("parent_id") REFERENCES "public"."categories"("id") ON DELETE no action ON UPDATE no action;--> statement-breakpoint
-ALTER TABLE "posts" ADD CONSTRAINT "posts_category_id_categories_id_fk" FOREIGN KEY ("category_id") REFERENCES "public"."categories"("id") ON DELETE no action ON UPDATE no action;
+ALTER TABLE "posts" ADD CONSTRAINT "posts_category_id_categories_id_fk" FOREIGN KEY ("category_id") REFERENCES "public"."categories"("id") ON DELETE no action ON UPDATE no action;--> statement-breakpoint
+CREATE INDEX "categories_slug_idx" ON "categories" USING btree ("slug");--> statement-breakpoint
+CREATE INDEX "categories_parent_id_idx" ON "categories" USING btree ("parent_id");--> statement-breakpoint
+CREATE INDEX "posts_slug_idx" ON "posts" USING btree ("slug");--> statement-breakpoint
+CREATE INDEX "posts_category_id_idx" ON "posts" USING btree ("category_id");--> statement-breakpoint
+CREATE INDEX "posts_created_at_idx" ON "posts" USING btree ("created_at");
