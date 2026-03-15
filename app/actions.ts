@@ -4,14 +4,11 @@ import { db } from "./db/client";
 import { categories, posts, Post } from "./db/schema";
 import { sql } from "drizzle-orm";
 
-export async function getPostByFullPath(
-  fullPath: string,
-): Promise<Post | null> {
-  const parts = fullPath.split("/");
-  if (parts.length === 0) return null;
+export async function getPostByFullPath(slugs: string[]): Promise<Post | null> {
+  if (slugs.length === 0) return null;
 
-  const postSlug = parts.pop();
-  const categoryPath = parts.join("/");
+  const postSlug = slugs.pop();
+  const categoryPath = slugs.join("/");
 
   try {
     const rows = await db.execute(sql`
