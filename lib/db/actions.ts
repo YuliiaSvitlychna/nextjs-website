@@ -1,14 +1,14 @@
-"use server";
+'use server';
 
-import { db } from "./db/client";
-import { categories, posts, Post, Category } from "./db/schema";
-import { sql } from "drizzle-orm";
+import { db } from './client';
+import { categories, posts, Post, Category } from './schema';
+import { sql } from 'drizzle-orm';
 
 export async function getPostByFullPath(slugs: string[]): Promise<Post | null> {
   if (slugs.length === 0) return null;
 
   const postSlug = slugs.pop();
-  const categoryPath = slugs.join("/");
+  const categoryPath = slugs.join('/');
 
   try {
     const rows = await db.execute(sql`
@@ -45,17 +45,17 @@ export async function getPostByFullPath(slugs: string[]): Promise<Post | null> {
 
     return rows[0] as Post;
   } catch (error) {
-    console.error("Error while searching for post by path:", error);
+    console.error('Error while searching for post by path:', error);
     return null;
   }
 }
 
 export async function getCategoryByFullPath(
-  slugs: string[],
+  slugs: string[]
 ): Promise<Category | null> {
   if (slugs.length === 0) return null;
 
-  const fullPath = slugs.join("/");
+  const fullPath = slugs.join('/');
 
   try {
     const rows = await db.execute(sql`
@@ -85,7 +85,7 @@ export async function getCategoryByFullPath(
 
     return rows[0] as Category;
   } catch (error) {
-    console.error("Error while searching for category by path:", error);
+    console.error('Error while searching for category by path:', error);
     return null;
   }
 }

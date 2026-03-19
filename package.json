@@ -10,7 +10,7 @@
     "db:gen": "drizzle-kit generate",
     "db:push": "drizzle-kit push",
     "db:studio": "drizzle-kit studio",
-    "db:seed": "tsx scripts/seed.ts",
+    "db:seed": "tsx lib/db/seed.ts",
     "format": "prettier --write ."
   },
   "dependencies": {

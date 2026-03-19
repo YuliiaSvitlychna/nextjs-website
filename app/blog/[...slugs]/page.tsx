@@ -1,7 +1,9 @@
-"use server";
+'use server';
 
-import { getPostByFullPath, getCategoryByFullPath } from "../../actions";
-import { notFound } from "next/navigation";
+import { notFound } from 'next/navigation';
+import { getPostByFullPath, getCategoryByFullPath } from '@/lib/db/actions';
+import PostPage from '@/components/post-page';
+import CategoryPage from '@/components/category-page';
 
 type PropsType = {
   params: Promise<{ slugs: string[] }>;
@@ -12,21 +14,12 @@ export default async function Page(props: PropsType) {
 
   const category = await getCategoryByFullPath(params.slugs);
   if (category) {
-    return (
-      <div>
-        <h1>{category.title}</h1>
-      </div>
-    );
+    return <CategoryPage category={category} />;
   }
 
   const post = await getPostByFullPath(params.slugs);
   if (post) {
-    return (
-      <div className="container">
-        <h1>{post.title}</h1>
-        <div>{post.body}</div>
-      </div>
-    );
+    return <PostPage post={post} />;
   }
 
   notFound();
