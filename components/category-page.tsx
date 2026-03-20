@@ -1,4 +1,4 @@
-import { Category } from '@/lib/db/schema';
+import { Category } from "@/lib/db/schema";
 
 export default async function CategoryPage(props: { category: Category }) {
   const { category } = props;
