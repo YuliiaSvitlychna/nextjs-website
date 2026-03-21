@@ -1,0 +1,1 @@
+ALTER TABLE "categories" ADD COLUMN "type" varchar(255) DEFAULT 'hidden' NOT NULL;

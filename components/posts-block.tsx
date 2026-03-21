@@ -1,11 +1,11 @@
 import { Category } from "@/lib/db/schema";
 
-export default async function CategoryPage(props: { category: Category }) {
+export default async function PostsBlock(props: { category: Category }) {
   const { category } = props;
 
   return (
     <div>
-      <h1>{category.title}</h1>
+      <div>Display Posts</div>
     </div>
   );
 }
