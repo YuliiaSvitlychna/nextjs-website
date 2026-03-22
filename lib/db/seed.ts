@@ -1,17 +1,13 @@
 import "dotenv/config";
 import postgres from "postgres";
 import { drizzle } from "drizzle-orm/postgres-js";
+import * as schema from "./schema";
 import { categories } from "./schema/categories";
 import { posts } from "./schema/posts";
 import { sql } from "drizzle-orm";
 
 const client = postgres(process.env.DATABASE_URL!);
-const db = drizzle(client, {
-  schema: {
-    posts,
-    categories,
-  },
-});
+const db = drizzle(client, { schema });
 
 async function main() {
   await db.execute(sql`TRUNCATE TABLE "posts" RESTART IDENTITY CASCADE`);
