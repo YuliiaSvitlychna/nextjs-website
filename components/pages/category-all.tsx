@@ -1,6 +1,6 @@
 import { Category } from "@/lib/db/schema";
-import SubcategoriesBlock from "./subcategories-block";
-import PostsBlock from "./posts-block";
+import SubcategoriesBlock from "@/components/blocks/subcategories";
+import PostsBlock from "@/components/blocks/posts";
 
 export default async function CategoryAllPage(props: { category: Category }) {
   const { category } = props;

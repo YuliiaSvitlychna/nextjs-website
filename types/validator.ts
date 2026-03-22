@@ -10,15 +10,8 @@ type AppPageConfig<Route extends AppRoutes = AppRoutes> = {
     | React.ComponentType<{ params: Promise<ParamMap[Route]> } & any>
     | ((
         props: { params: Promise<ParamMap[Route]> } & any,
-      ) =>
-        | React.ReactNode
-        | Promise<React.ReactNode>
-        | never
-        | void
-        | Promise<void>);
-  generateStaticParams?: (props: {
-    params: ParamMap[Route];
-  }) => Promise<any[]> | any[];
+      ) => React.ReactNode | Promise<React.ReactNode> | never | void | Promise<void>);
+  generateStaticParams?: (props: { params: ParamMap[Route] }) => Promise<any[]> | any[];
   generateMetadata?: (
     props: { params: Promise<ParamMap[Route]> } & any,
     parent: ResolvingMetadata,
@@ -36,15 +29,8 @@ type LayoutConfig<Route extends LayoutRoutes = LayoutRoutes> = {
     | React.ComponentType<LayoutProps<Route>>
     | ((
         props: LayoutProps<Route>,
-      ) =>
-        | React.ReactNode
-        | Promise<React.ReactNode>
-        | never
-        | void
-        | Promise<void>);
-  generateStaticParams?: (props: {
-    params: ParamMap[Route];
-  }) => Promise<any[]> | any[];
+      ) => React.ReactNode | Promise<React.ReactNode> | never | void | Promise<void>);
+  generateStaticParams?: (props: { params: ParamMap[Route] }) => Promise<any[]> | any[];
   generateMetadata?: (
     props: { params: Promise<ParamMap[Route]> } & any,
     parent: ResolvingMetadata,

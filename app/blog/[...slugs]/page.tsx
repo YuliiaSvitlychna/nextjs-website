@@ -1,11 +1,12 @@
 "use server";
 
 import { notFound } from "next/navigation";
-import { getPostByFullPath, getCategoryByFullPath } from "@/lib/db/actions";
-import PostPage from "@/components/post-page";
-import CategoryAllPage from "@/components/category-all-page";
-import CategorySubcategoriesPage from "@/components/category-subcategories-page";
-import CategoryPostsPage from "@/components/category-posts-page";
+import getPostByFullPath from "@/lib/db/actions/get-post-by-full-path";
+import getCategoryByFullPath from "@/lib/db/actions/get-category-by-full-path";
+import PostPage from "@/components/pages/post";
+import CategoryAllPage from "@/components/pages/category-all";
+import CategorySubcategoriesPage from "@/components/pages/category-subcategories";
+import CategoryPostsPage from "@/components/pages/category-posts";
 
 type PropsType = {
   params: Promise<{ slugs: string[] }>;

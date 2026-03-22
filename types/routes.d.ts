@@ -6,12 +6,7 @@ type PageRoutes = never;
 type LayoutRoutes = "/";
 type RedirectRoutes = never;
 type RewriteRoutes = never;
-type Routes =
-  | AppRoutes
-  | PageRoutes
-  | LayoutRoutes
-  | RedirectRoutes
-  | RewriteRoutes;
+type Routes = AppRoutes | PageRoutes | LayoutRoutes | RedirectRoutes | RewriteRoutes;
 
 interface ParamMap {
   "/": {};
@@ -23,14 +18,7 @@ interface LayoutSlotMap {
   "/": never;
 }
 
-export type {
-  AppRoutes,
-  PageRoutes,
-  LayoutRoutes,
-  RedirectRoutes,
-  RewriteRoutes,
-  ParamMap,
-};
+export type { AppRoutes, PageRoutes, LayoutRoutes, RedirectRoutes, RewriteRoutes, ParamMap };
 
 declare global {
   /**

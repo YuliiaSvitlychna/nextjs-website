@@ -1,9 +1,7 @@
 import { Category } from "@/lib/db/schema";
-import SubcategoriesBlock from "./subcategories-block";
+import SubcategoriesBlock from "../blocks/subcategories";
 
-export default async function CategorySubcategoriesPage(props: {
-  category: Category;
-}) {
+export default async function CategorySubcategoriesPage(props: { category: Category }) {
   const { category } = props;
 
   return (

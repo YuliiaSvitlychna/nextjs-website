@@ -1,13 +1,17 @@
 import "dotenv/config";
 import postgres from "postgres";
 import { drizzle } from "drizzle-orm/postgres-js";
-import * as schema from "./schema";
-import { categories, posts } from "./schema";
+import { categories } from "./schema/categories";
+import { posts } from "./schema/posts";
 import { sql } from "drizzle-orm";
 
 const client = postgres(process.env.DATABASE_URL!);
-
-const db = drizzle(client, { schema });
+const db = drizzle(client, {
+  schema: {
+    posts,
+    categories,
+  },
+});
 
 async function main() {
   await db.execute(sql`TRUNCATE TABLE "posts" RESTART IDENTITY CASCADE`);
@@ -19,11 +23,11 @@ async function main() {
     .returning();
   const [lifestyle] = await db
     .insert(categories)
-    .values({ title: "Lifestyle", slug: "lifestyle" })
+    .values({ title: "Lifestyle", slug: "lifestyle", type: "displayed-subcategories" })
     .returning();
   const [business] = await db
     .insert(categories)
-    .values({ title: "Business", slug: "business" })
+    .values({ title: "Business", slug: "business", type: "displayed-all" })
     .returning();
 
   const [frontend] = await db
@@ -56,6 +60,7 @@ async function main() {
       title: "Travel",
       slug: "travel",
       parentId: lifestyle.id,
+      type: "displayed-posts",
     })
     .returning();
   const [health] = await db
@@ -81,6 +86,7 @@ async function main() {
       slug: "hello-drizzle",
       body: "Your first seeded post using Drizzle ORM.",
       categoryId: tech.id,
+      status: "draft",
     },
     {
       title: "React in 2025",
