@@ -1,6 +1,7 @@
 import { pgTable, text, timestamp, index, uuid, varchar } from "drizzle-orm/pg-core";
 import { type InferSelectModel, type InferInsertModel } from "drizzle-orm";
 import { categories } from "./categories";
+
 export const posts = pgTable(
   "posts",
   {

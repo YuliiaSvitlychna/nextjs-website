@@ -1,5 +1,3 @@
-"use server";
-
 import { db } from "../client";
 import { categories, Category } from "../schema/categories";
 import { sql } from "drizzle-orm";
