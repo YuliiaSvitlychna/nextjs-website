@@ -1,4 +1,4 @@
-import { Post } from "@/lib/db/schema";
+import { Post } from "@/lib/db/schema/posts";
 
 export default async function PostPage(props: { post: Post }) {
   const { post } = props;

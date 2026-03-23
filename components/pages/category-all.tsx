@@ -1,4 +1,4 @@
-import { Category } from "@/lib/db/schema";
+import { Category } from "@/lib/db/schema/categories";
 import SubcategoriesBlock from "@/components/blocks/subcategories";
 import PostsBlock from "@/components/blocks/posts";
 

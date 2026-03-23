@@ -1,4 +1,4 @@
-import { Category } from "@/lib/db/schema";
+import { Category } from "@/lib/db/schema/categories";
 import PostsBlock from "@/components/blocks/posts";
 
 export default async function CategoryPostsPage(props: { category: Category }) {
