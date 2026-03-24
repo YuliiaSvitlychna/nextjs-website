@@ -2,8 +2,8 @@ import "dotenv/config";
 import postgres from "postgres";
 import { drizzle } from "drizzle-orm/postgres-js";
 import * as schema from "./schema";
-import { categories } from "./schema/categories";
-import { posts } from "./schema/posts";
+import { categories, Type } from "./schema/categories";
+import { posts, Status } from "./schema/posts";
 import { sql } from "drizzle-orm";
 
 const client = postgres(process.env.DATABASE_URL!);
@@ -19,11 +19,11 @@ async function main() {
     .returning();
   const [lifestyle] = await db
     .insert(categories)
-    .values({ title: "Lifestyle", slug: "lifestyle", type: "displayed-subcategories" })
+    .values({ title: "Lifestyle", slug: "lifestyle", type: Type.DisplayedSubcategories })
     .returning();
   const [business] = await db
     .insert(categories)
-    .values({ title: "Business", slug: "business", type: "displayed-all" })
+    .values({ title: "Business", slug: "business", type: Type.DisplayedAll })
     .returning();
 
   const [frontend] = await db
@@ -56,7 +56,7 @@ async function main() {
       title: "Travel",
       slug: "travel",
       parentId: lifestyle.id,
-      type: "displayed-posts",
+      type: Type.DisplayedPosts,
     })
     .returning();
   const [health] = await db
@@ -82,7 +82,7 @@ async function main() {
       slug: "hello-drizzle",
       body: "Your first seeded post using Drizzle ORM.",
       categoryId: tech.id,
-      status: "draft",
+      status: Status.Draft,
     },
     {
       title: "React in 2025",
