@@ -79,12 +79,8 @@
           "name": "category_parents",
           "tableFrom": "categories",
           "tableTo": "categories",
-          "columnsFrom": [
-            "parent_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["parent_id"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
@@ -205,12 +201,8 @@
           "name": "posts_category_id_categories_id_fk",
           "tableFrom": "posts",
           "tableTo": "categories",
-          "columnsFrom": [
-            "category_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["category_id"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
@@ -226,20 +218,12 @@
     "public.category_type": {
       "name": "category_type",
       "schema": "public",
-      "values": [
-        "hidden",
-        "displayed-all",
-        "displayed-posts",
-        "displayed-subcategories"
-      ]
+      "values": ["hidden", "displayed-all", "displayed-posts", "displayed-subcategories"]
     },
     "public.post_status": {
       "name": "post_status",
       "schema": "public",
-      "values": [
-        "published",
-        "draft"
-      ]
+      "values": ["published", "draft"]
     }
   },
   "schemas": {},

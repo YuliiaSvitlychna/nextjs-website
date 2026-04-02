@@ -12,21 +12,24 @@ import { Type } from "@/lib/db/schema/categories";
 
 type PropsType = {
   params: Promise<{ slugs: string[] }>;
+  searchParams: Promise<{ page: string }>;
 };
 
 export default async function Page(props: PropsType) {
-  const params = await props.params;
+  const { slugs } = await props.params;
+  const searchParams = await props.searchParams;
+  const page = Number(searchParams.page) || 1;
 
-  const category = await getCategoryByFullPath(params.slugs);
+  const category = await getCategoryByFullPath(slugs);
   if (category?.type === Type.DisplayedAll) {
-    return <CategoryAllPage category={category} />;
+    return <CategoryAllPage category={category} page={page} />;
   } else if (category?.type === Type.DisplayedSubcategories) {
-    return <CategorySubcategoriesPage category={category} />;
+    return <CategorySubcategoriesPage category={category} page={page} />;
   } else if (category?.type === Type.DisplayedPosts) {
-    return <CategoryPostsPage category={category} />;
+    return <CategoryPostsPage category={category} page={page} />;
   }
 
-  const post = await getPostByFullPath(params.slugs);
+  const post = await getPostByFullPath(slugs);
   if (post?.status === Status.Published) {
     return <PostPage post={post} />;
   }
