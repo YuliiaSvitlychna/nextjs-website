@@ -3,7 +3,7 @@ import postgres from "postgres";
 import { drizzle } from "drizzle-orm/postgres-js";
 import * as schema from "./schema";
 import { categories, Type } from "./schema/categories";
-import { posts, Status } from "./schema/posts";
+import { posts, Status, type NewPost } from "./schema/posts";
 import { sql } from "drizzle-orm";
 
 const client = postgres(process.env.DATABASE_URL!);
@@ -76,7 +76,7 @@ async function main() {
     })
     .returning();
 
-  await db.insert(posts).values([
+  const seededPosts: NewPost[] = [
     {
       title: "Hello Drizzle",
       slug: "hello-drizzle",
@@ -150,7 +150,20 @@ async function main() {
       body: "How to think about pricing.",
       categoryId: business.id,
     },
-  ]);
+  ];
+
+  // Add 100 extra posts to Travel for pager testing
+  for (let i = 1; i <= 100; i++) {
+    const n = String(i).padStart(3, "0");
+    seededPosts.push({
+      title: `Travel Post ${n}`,
+      slug: `travel-post-${n}`,
+      body: `Seeded travel post #${i} for pagination testing.`,
+      categoryId: travel.id,
+    });
+  }
+
+  await db.insert(posts).values(seededPosts);
 }
 
 main()
