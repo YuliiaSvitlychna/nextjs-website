@@ -160,6 +160,7 @@ async function main() {
       slug: `travel-post-${n}`,
       body: `Seeded travel post #${i} for pagination testing.`,
       categoryId: travel.id,
+      createdAt: new Date(i),
     });
   }
 
