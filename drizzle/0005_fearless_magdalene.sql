@@ -1,0 +1,1 @@
+ALTER TABLE "posts" ADD COLUMN "teaser" text NOT NULL;

@@ -17,7 +17,7 @@ export const categories = pgTable(
     title: varchar("title", { length: 255 }).notNull(),
     slug: varchar("slug", { length: 255 }).notNull(),
     type: categoryTypeEnum("type").default(Type.Hidden).notNull(),
-    weight: integer().default(0).notNull(),
+    weight: integer("weight").default(0).notNull(),
     parentId: uuid("parent_id"),
   },
   (table) => [

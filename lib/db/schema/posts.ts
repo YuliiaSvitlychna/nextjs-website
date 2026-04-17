@@ -14,6 +14,7 @@ export const posts = pgTable(
   {
     id: uuid("id").primaryKey().defaultRandom(),
     title: varchar("title", { length: 255 }).notNull(),
+    teaser: text("teaser").notNull(),
     body: text("body").notNull(),
     slug: varchar("slug", { length: 255 }).notNull(),
     categoryId: uuid("category_id")

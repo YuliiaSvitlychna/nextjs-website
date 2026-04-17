@@ -21,7 +21,10 @@ export default async function PostsList(props: PropsType) {
     <div className="posts-list">
       <div>Display Posts</div>
       {posts.map((post) => (
-        <div key={post.id}>{post.title}</div>
+        <div key={post.id}>
+          <h2>{post.title}</h2>
+          <div>{post.teaser}</div>
+        </div>
       ))}
       <Pager page={page} pageLength={POSTS_PER_PAGE} totalLength={totalCount} />
     </div>
