@@ -1,4 +1,4 @@
-import { foreignKey, pgEnum, pgTable, index, uuid, varchar } from "drizzle-orm/pg-core";
+import { foreignKey, pgEnum, pgTable, index, uuid, varchar, integer } from "drizzle-orm/pg-core";
 import { type InferSelectModel, type InferInsertModel } from "drizzle-orm";
 
 export enum Type {
@@ -17,6 +17,7 @@ export const categories = pgTable(
     title: varchar("title", { length: 255 }).notNull(),
     slug: varchar("slug", { length: 255 }).notNull(),
     type: categoryTypeEnum("type").default(Type.Hidden).notNull(),
+    weight: integer().default(0).notNull(),
     parentId: uuid("parent_id"),
   },
   (table) => [

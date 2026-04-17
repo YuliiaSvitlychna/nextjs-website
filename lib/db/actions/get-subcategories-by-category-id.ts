@@ -1,6 +1,6 @@
 import { categories, Category } from "../schema/categories";
 import { db } from "../client";
-import { eq, desc, sql } from "drizzle-orm";
+import { eq, asc, sql } from "drizzle-orm";
 import { SUBCATEGORIES_PER_PAGE } from "@/config";
 
 export default async function getSubcategoriesByCategoryId(
@@ -14,7 +14,7 @@ export default async function getSubcategoriesByCategoryId(
     })
     .from(categories)
     .where(eq(categories.parentId, categoryId))
-    .orderBy(desc(categories.title))
+    .orderBy(asc(categories.weight))
     .limit(SUBCATEGORIES_PER_PAGE)
     .offset((page - 1) * SUBCATEGORIES_PER_PAGE);
 
