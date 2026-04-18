@@ -23,22 +23,22 @@ export default async function Page(props: PropsType) {
     return (
       <CategoryWrapper>
         <h1>{category.title}</h1>
-        <SubcategoriesList category={category} page={page} />
-        <PostsList category={category} page={page} />
+        <SubcategoriesList category={category} page={page} slugs={slugs} />
+        <PostsList category={category} page={page} slugs={slugs} />
       </CategoryWrapper>
     );
   } else if (category?.type === Type.DisplayedSubcategories) {
     return (
       <CategoryWrapper>
         <h1>{category.title}</h1>
-        <SubcategoriesList category={category} page={page} />
+        <SubcategoriesList category={category} page={page} slugs={slugs} />
       </CategoryWrapper>
     );
   } else if (category?.type === Type.DisplayedPosts) {
     return (
       <CategoryWrapper>
         <h1>{category.title}</h1>
-        <PostsList category={category} page={page} />
+        <PostsList category={category} page={page} slugs={slugs} />
       </CategoryWrapper>
     );
   }

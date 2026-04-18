@@ -1,6 +1,6 @@
-import { categories, Category } from "../schema/categories";
+import { categories, Category, Type } from "../schema/categories";
 import { db } from "../client";
-import { eq, asc, sql } from "drizzle-orm";
+import { eq, asc, sql, and, ne } from "drizzle-orm";
 import { SUBCATEGORIES_PER_PAGE } from "@/config";
 
 export default async function getSubcategoriesByCategoryId(
@@ -13,7 +13,7 @@ export default async function getSubcategoriesByCategoryId(
       totalCount: sql<number>`count(*) OVER()`.mapWith(Number),
     })
     .from(categories)
-    .where(eq(categories.parentId, categoryId))
+    .where(and(eq(categories.parentId, categoryId), ne(categories.type, Type.Hidden)))
     .orderBy(asc(categories.weight))
     .limit(SUBCATEGORIES_PER_PAGE)
     .offset((page - 1) * SUBCATEGORIES_PER_PAGE);
