@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Category } from "@/lib/db/schema/categories";
 import getPostsByCategoryId from "@/lib/db/actions/get-posts-by-category-id";
 import Pager from "@/components/pager";
-import { POSTS_PER_PAGE } from "@/config";
+import { POSTS_PER_PAGE, BLOG_PREFIX } from "@/config";
 
 type PropsType = {
   category: Category;
@@ -24,7 +24,7 @@ export default async function PostsList(props: PropsType) {
       <div>Display Posts</div>
       {posts.map((post) => (
         <div key={post.id}>
-          <Link href={`/blog/${slugs.join("/")}/${post.slug}`}>
+          <Link href={`/${BLOG_PREFIX}/${slugs.join("/")}/${post.slug}`}>
             <h2>{post.title}</h2>
           </Link>
           <div>{post.teaser}</div>

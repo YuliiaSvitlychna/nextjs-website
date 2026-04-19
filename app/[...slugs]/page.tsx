@@ -7,6 +7,7 @@ import PostsList from "@/components/posts-list";
 import SubcategoriesList from "@/components/subcategories-list";
 import { Status } from "@/lib/db/schema/posts";
 import { Type } from "@/lib/db/schema/categories";
+import { BLOG_PREFIX } from "@/config";
 
 type PropsType = {
   params: Promise<{ slugs: string[] }>;
@@ -17,6 +18,13 @@ export default async function Page(props: PropsType) {
   const { slugs } = await props.params;
   const searchParams = await props.searchParams;
   const page = Number(searchParams.page) || 1;
+
+  const prefixSlugs = BLOG_PREFIX.split("/");
+  prefixSlugs.forEach((prefixSlug) => {
+    if (prefixSlug !== slugs.shift()) {
+      notFound();
+    }
+  });
 
   const category = await getCategoryByFullPath(slugs);
   if (category?.type === Type.DisplayedAll) {
