@@ -1,4 +1,13 @@
-import { pgTable, text, timestamp, index, uuid, varchar, pgEnum } from "drizzle-orm/pg-core";
+import {
+  pgTable,
+  text,
+  timestamp,
+  index,
+  uuid,
+  varchar,
+  pgEnum,
+  boolean,
+} from "drizzle-orm/pg-core";
 import { type InferSelectModel, type InferInsertModel } from "drizzle-orm";
 import { categories } from "./categories";
 
@@ -21,6 +30,9 @@ export const posts = pgTable(
       .notNull()
       .references(() => categories.id),
     status: postStatusEnum("status").default(Status.Published).notNull(),
+    seo_description: text("seo_description"),
+    og_image: varchar("og_image", { length: 1024 }),
+    is_sitemap: boolean("is_sitemap").default(true),
     createdAt: timestamp("created_at").defaultNow().notNull(),
     updatedAt: timestamp("updated_at").defaultNow().notNull(),
   },

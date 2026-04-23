@@ -43,6 +43,13 @@
       "when": 1776451968339,
       "tag": "0005_fearless_magdalene",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1776890593373,
+      "tag": "0006_fair_iron_patriot",
+      "breakpoints": true
     }
   ]
 }
