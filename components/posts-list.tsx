@@ -19,12 +19,14 @@ export default async function PostsList(props: PropsType) {
     notFound();
   }
 
+  const categoryPath = `/${BLOG_PREFIX}/${slugs.join("/")}`;
+
   return (
     <div className="posts-list">
       <div>Display Posts</div>
       {posts.map((post) => (
         <div key={post.id}>
-          <Link href={`/${BLOG_PREFIX}/${slugs.join("/")}/${post.slug}`}>
+          <Link href={`${categoryPath}/${post.slug}`}>
             <h2>{post.title}</h2>
           </Link>
           <div>{post.teaser}</div>
