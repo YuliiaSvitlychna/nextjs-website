@@ -1,22 +1,4 @@
-import type { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "Contact",
-  description: "Get in touch with our team for feedback, questions, or partnerships.",
-  alternates: {
-    canonical: "/contact",
-  },
-  openGraph: {
-    title: "Contact",
-    description: "Get in touch with our team for feedback, questions, or partnerships.",
-    url: "/contact",
-  },
-  twitter: {
-    card: "summary",
-    title: "Contact",
-    description: "Get in touch with our team for feedback, questions, or partnerships.",
-  },
-};
+export { contactMetadata as metadata } from "@/lib/seo/static";
 
 export default function ContactPage() {
   return (

@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { SITE_TITLE, SITE_DESCRIPTION } from "@/config";
 import { HeaderMenu } from "@/components/header-menu";
 import { FooterMenu } from "@/components/footer-menu";
 
@@ -17,8 +16,6 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.PUBLIC_SITE_URL ?? "http://localhost:3000"),
-  title: SITE_TITLE,
-  description: SITE_DESCRIPTION,
 };
 
 export default function RootLayout({

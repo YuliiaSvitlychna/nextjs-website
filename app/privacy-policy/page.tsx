@@ -1,22 +1,4 @@
-import type { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "Privacy Policy",
-  description: "Read how we collect, use, and protect your personal data.",
-  alternates: {
-    canonical: "/privacy-policy",
-  },
-  openGraph: {
-    title: "Privacy Policy",
-    description: "Read how we collect, use, and protect your personal data.",
-    url: "/privacy-policy",
-  },
-  twitter: {
-    card: "summary",
-    title: "Privacy Policy",
-    description: "Read how we collect, use, and protect your personal data.",
-  },
-};
+export { privacyPolicyMetadata as metadata } from "@/lib/seo/static";
 
 export default function PrivacyPage() {
   return (
