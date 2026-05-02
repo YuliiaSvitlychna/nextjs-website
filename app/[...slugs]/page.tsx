@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import { ReactNode } from "react";
 import { resolveSlugContent } from "./resolve-slug-content";
+import JsonLd from "@/components/json-ld";
 
 type PropsType = {
   params: Promise<{ slugs: string[] }>;
@@ -21,6 +22,11 @@ export default async function Page(props: PropsType): Promise<ReactNode> {
   const searchParams = await props.searchParams;
   const page = Number(searchParams?.page) || 1;
 
-  const { reactNode } = await resolveSlugContent([...slugs], page);
-  return reactNode;
+  const { reactNode, schema } = await resolveSlugContent([...slugs], page);
+  return (
+    <>
+      {reactNode}
+      <JsonLd schema={schema} />
+    </>
+  );
 }

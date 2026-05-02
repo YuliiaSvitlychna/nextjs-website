@@ -1,9 +1,14 @@
 export { homeMetadata as metadata } from "@/lib/seo/static";
+import { homeSchema } from "@/lib/seo/static";
+import JsonLd from "@/components/json-ld";
 
 export default function HomePage() {
   return (
-    <div>
-      <h1>Homepage</h1>
-    </div>
+    <>
+      <div>
+        <h1>Homepage</h1>
+      </div>
+      <JsonLd schema={homeSchema} />
+    </>
   );
 }
