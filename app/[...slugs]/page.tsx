@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import { ReactNode } from "react";
-import { resolveSlugContent } from "./resolve-slug-content";
+import { resolveSlugContentCached } from "./resolve-slug-content";
 import JsonLd from "@/components/json-ld";
 
 type PropsType = {
@@ -13,7 +13,7 @@ export async function generateMetadata(props: PropsType): Promise<Metadata> {
   const searchParams = await props.searchParams;
   const page = Number(searchParams?.page) || 1;
 
-  const { metadata } = await resolveSlugContent([...slugs], page);
+  const { metadata } = await resolveSlugContentCached(page, ...slugs);
   return metadata;
 }
 
@@ -22,7 +22,7 @@ export default async function Page(props: PropsType): Promise<ReactNode> {
   const searchParams = await props.searchParams;
   const page = Number(searchParams?.page) || 1;
 
-  const { reactNode, schema } = await resolveSlugContent([...slugs], page);
+  const { reactNode, schema } = await resolveSlugContentCached(page, ...slugs);
   return (
     <>
       {reactNode}

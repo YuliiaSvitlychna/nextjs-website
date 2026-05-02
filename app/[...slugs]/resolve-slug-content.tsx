@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
-import { ReactNode } from "react";
+import { ReactNode, cache } from "react";
 import { WithContext, Thing } from "schema-dts";
 import getCategoryByFullPath from "@/lib/db/actions/get-category-by-full-path";
 import getPostByFullPath from "@/lib/db/actions/get-post-by-full-path";
@@ -13,6 +13,10 @@ import { Type } from "@/lib/db/schema/categories";
 import { BLOG_PREFIX } from "@/config";
 import { generateCategoryMetadata, generateCategorySchema } from "@/lib/seo/category";
 import { generatePostMetadata, generatePostSchema } from "@/lib/seo/post";
+
+export const resolveSlugContentCached = cache(async (page: number, ...slugs: string[]) => {
+  return resolveSlugContent(slugs, page);
+});
 
 export async function resolveSlugContent(
   slugs: string[],
