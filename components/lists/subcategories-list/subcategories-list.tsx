@@ -2,8 +2,9 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { Category } from "@/lib/db/schema/categories";
 import getSubcategoriesByCategoryId from "@/lib/db/actions/get-subcategories-by-category-id";
-import Pager from "@/components/pager";
+import Pager from "@/components/blocks/pager/pager";
 import { SUBCATEGORIES_PER_PAGE, BLOG_PREFIX } from "@/config";
+import "./subcategories-list.module.scss";
 
 type PropsType = {
   category: Category;
@@ -23,7 +24,6 @@ export default async function SubcategoriesList(props: PropsType) {
 
   return (
     <div className="subcategories-list">
-      <div>Display Subcategories</div>
       {subcategories.map((subcat) => (
         <div key={subcat.id}>
           <Link href={`${parentCategoryPath}/${subcat.slug}`}>{subcat.title}</Link>

@@ -1,6 +1,7 @@
 export { homeMetadata as metadata } from "@/lib/seo/static";
 import { homeSchema } from "@/lib/seo/static";
-import JsonLd from "@/components/json-ld";
+import { JsonLd } from "@/components/seo/json-ld";
+import "./page.module.scss";
 
 export default function HomePage() {
   return (

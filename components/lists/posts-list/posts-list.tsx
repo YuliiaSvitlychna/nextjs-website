@@ -2,8 +2,9 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { Category } from "@/lib/db/schema/categories";
 import getPostsByCategoryId from "@/lib/db/actions/get-posts-by-category-id";
-import Pager from "@/components/pager";
+import Pager from "@/components/blocks/pager/pager";
 import { POSTS_PER_PAGE, BLOG_PREFIX } from "@/config";
+import "./posts-list.module.scss";
 
 type PropsType = {
   category: Category;
@@ -23,7 +24,6 @@ export default async function PostsList(props: PropsType) {
 
   return (
     <div className="posts-list">
-      <div>Display Posts</div>
       {posts.map((post) => (
         <div key={post.id}>
           <Link href={`${categoryPath}/${post.slug}`}>

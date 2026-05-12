@@ -1,4 +1,5 @@
 import Link from "next/link";
+import styles from "./pager.module.scss";
 
 type PropsType = {
   page: number;
@@ -19,7 +20,7 @@ export default function Pager(props: PropsType) {
   const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
 
   return (
-    <div className="pager flex items-center gap-2">
+    <div className={styles.pager}>
       {pages.map((pageNumber) => {
         const isActive = pageNumber === page;
         return (
@@ -27,11 +28,7 @@ export default function Pager(props: PropsType) {
             key={pageNumber}
             href={buildHref(pageNumber)}
             aria-current={isActive ? "page" : undefined}
-            className={
-              isActive
-                ? "rounded border border-black px-3 py-1 font-semibold"
-                : "rounded border px-3 py-1"
-            }
+            className={`${styles.link} ${isActive ? styles.activeLink : ""}`.trim()}
           >
             {pageNumber}
           </Link>

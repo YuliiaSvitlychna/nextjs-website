@@ -5,7 +5,7 @@ type PropsType = {
   schema: WithContext<Thing>;
 };
 
-export default function JsonLd(props: PropsType) {
+export function JsonLdHead(props: PropsType) {
   const { schema } = props;
 
   return (
@@ -13,6 +13,17 @@ export default function JsonLd(props: PropsType) {
     <Script
       id="schema-org"
       strategy="beforeInteractive"
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  );
+}
+
+export function JsonLd(props: PropsType) {
+  const { schema } = props;
+
+  return (
+    <script
       type="application/ld+json"
       dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
     />

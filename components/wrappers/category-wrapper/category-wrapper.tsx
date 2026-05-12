@@ -1,4 +1,5 @@
 import { type ReactNode } from "react";
+import "./category-wrapper.module.scss";
 
 type PropsType = {
   children?: ReactNode;

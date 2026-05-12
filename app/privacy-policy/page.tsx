@@ -1,6 +1,7 @@
 export { privacyPolicyMetadata as metadata } from "@/lib/seo/static";
-import JsonLd from "@/components/json-ld";
+import { JsonLd } from "@/components/seo/json-ld";
 import { privacyPolicySchema } from "@/lib/seo/static";
+import "./page.module.scss";
 
 export default function PrivacyPage() {
   return (
