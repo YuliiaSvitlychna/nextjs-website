@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.scss";
-import { HeaderMenu } from "@/components/menus/header-menu/header-menu";
-import { FooterMenu } from "@/components/menus/footer-menu/footer-menu";
+import { Header } from "@/components/blocks/header/header";
+import { Footer } from "@/components/blocks/footer/footer";
+import { THEME_STORAGE_KEY } from "@/config";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,11 +25,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem('${THEME_STORAGE_KEY}');if(t==='light'){document.documentElement.setAttribute('data-theme','light');}}catch(e){}})();`,
+          }}
+        />
+      </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <HeaderMenu />
+        <Header />
         {children}
-        <FooterMenu />
+        <Footer />
       </body>
     </html>
   );
