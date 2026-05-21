@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { ThemeToggle } from "@/components/theme-toggle/theme-toggle";
-import { HamburgerMenu } from "./hamburger-menu";
+import { ThemeToggle } from "@/components/blocks/header/theme-toggle/theme-toggle";
+import { HamburgerMenu } from "./hamburger/hamburger-menu";
 import { HEADER_LINKS } from "@/config";
 import styles from "./header.module.scss";
 

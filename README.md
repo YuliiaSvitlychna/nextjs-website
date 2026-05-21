@@ -61,12 +61,6 @@ This value is used in `drizzle.config.ts`.
 
 ## 5. Migrations and schema (Drizzle)
 
-### Generate migrations from the schema
-
-```bash
-pnpm run db:gen
-```
-
 ### Apply migrations to the database
 
 ```bash
@@ -89,7 +83,19 @@ Code formatting is handled by **Prettier**:
 pnpm run format
 ```
 
-## 7. Typical setup flow from scratch
+## 7. Build
+
+```bash
+pnpm build
+```
+
+## 8. Dev server
+
+```bash
+pnpm dev
+```
+
+## 9. Typical setup flow from scratch
 
 1. Clone the repository (or copy the project files).
 2. Install dependencies: `pnpm install`.
@@ -98,5 +104,7 @@ pnpm run format
 5. Generate migrations: `pnpm run db:gen` (if the schema was changed).
 6. Apply migrations: `pnpm run db:push`.
 7. (Optional) Open `db:studio` to inspect and edit data.
+8. Build the app: `pnpm build`.
+9. Run the dev server: `pnpm dev`.
 
-If you later add a Next.js application, you can extend this README with a section about running `next dev` / `next start`.
+The app will be available at [http://localhost:3000](http://localhost:3000).
