@@ -4,6 +4,8 @@ import { drizzle } from "drizzle-orm/postgres-js";
 import * as schema from "./schema";
 import { categories, Type } from "./schema/categories";
 import { posts, Status, type NewPost } from "./schema/posts";
+import { authors } from "./schema/authors";
+import { postsAuthors } from "./schema/posts-authors";
 import { sql } from "drizzle-orm";
 
 const client = postgres(process.env.DATABASE_URL!);
@@ -12,6 +14,7 @@ const db = drizzle(client, { schema });
 async function main() {
   await db.execute(sql`TRUNCATE TABLE "posts" RESTART IDENTITY CASCADE`);
   await db.execute(sql`TRUNCATE TABLE "categories" RESTART IDENTITY CASCADE`);
+  await db.execute(sql`TRUNCATE TABLE "authors" RESTART IDENTITY CASCADE`);
 
   const [tech] = await db
     .insert(categories)
@@ -79,6 +82,37 @@ async function main() {
       slug: "startups",
       parentId: business.id,
       weight: 1,
+    })
+    .returning();
+
+  const [alice] = await db
+    .insert(authors)
+    .values({
+      name: "Alice Johnson",
+      bio: "Senior frontend engineer passionate about React and UX.",
+      job_title: "Senior Frontend Engineer",
+      github_url: "https://github.com/alicej",
+      linkedin_url: "https://linkedin.com/in/alicej",
+    })
+    .returning();
+  const [bob] = await db
+    .insert(authors)
+    .values({
+      name: "Bob Chen",
+      bio: "Backend architect with a love for distributed systems.",
+      job_title: "Backend Architect",
+      github_url: "https://github.com/bobchen",
+      linkedin_url: "https://linkedin.com/in/bobchen",
+    })
+    .returning();
+  const [carol] = await db
+    .insert(authors)
+    .values({
+      name: "Carol Davis",
+      bio: "DevOps engineer and cloud infrastructure enthusiast.",
+      job_title: "DevOps Engineer",
+      github_url: "https://github.com/carold",
+      linkedin_url: "https://linkedin.com/in/carold",
     })
     .returning();
 
@@ -183,7 +217,23 @@ async function main() {
     });
   }
 
-  await db.insert(posts).values(seededPosts);
+  const insertedPosts = await db.insert(posts).values(seededPosts).returning();
+
+  const authorPool = [alice, bob, carol];
+
+  const postsAuthorsValues = insertedPosts.flatMap((post, i) => {
+    if (i < 12) {
+      const count = i % 3 === 0 ? 2 : 1;
+      const shuffled = [...authorPool].sort(() => ((i * 7 + count) % 3) - 1.5);
+      return shuffled.slice(0, count).map((author) => ({
+        postId: post.id,
+        authorId: author.id,
+      }));
+    }
+    return [{ postId: post.id, authorId: authorPool[i % 3].id }];
+  });
+
+  await db.insert(postsAuthors).values(postsAuthorsValues);
 }
 
 main()

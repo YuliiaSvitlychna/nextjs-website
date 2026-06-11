@@ -50,6 +50,13 @@
       "when": 1776890593373,
       "tag": "0006_fair_iron_patriot",
       "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "7",
+      "when": 1781203121575,
+      "tag": "0007_lonely_dark_beast",
+      "breakpoints": true
     }
   ]
 }
