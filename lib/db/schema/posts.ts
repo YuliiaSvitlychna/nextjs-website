@@ -10,6 +10,7 @@ import {
 } from "drizzle-orm/pg-core";
 import { type InferSelectModel, type InferInsertModel } from "drizzle-orm";
 import { categories } from "./categories";
+import { Author } from "./authors";
 
 export enum Status {
   Published = "published",
@@ -43,5 +44,5 @@ export const posts = pgTable(
   ],
 );
 
-export type Post = InferSelectModel<typeof posts>;
+export type Post = InferSelectModel<typeof posts> & { authors: Author[] };
 export type NewPost = InferInsertModel<typeof posts>;

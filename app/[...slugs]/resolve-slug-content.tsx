@@ -13,6 +13,7 @@ import { Type } from "@/lib/db/schema/categories";
 import { BLOG_PREFIX } from "@/config";
 import { generateCategoryMetadata, generateCategorySchema } from "@/lib/seo/category";
 import { generatePostMetadata, generatePostSchema } from "@/lib/seo/post";
+import { PostAuthorsList } from "@/components/lists/post-authors-list/post-authors-list";
 
 export const resolveSlugContentCached = cache(async (page: number, ...slugs: string[]) => {
   return resolveSlugContent(slugs, page);
@@ -67,10 +68,12 @@ export async function resolveSlugContent(
   if (post?.status === Status.Published) {
     const metadata = generatePostMetadata(post, slugs);
     const schema = generatePostSchema(post, slugs);
+
     const reactNode = (
       <PostWrapper>
         <h1>{post.title}</h1>
         <div>{post.body}</div>
+        <PostAuthorsList authors={post.authors} />
       </PostWrapper>
     );
     return { metadata, schema, reactNode };
