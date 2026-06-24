@@ -1,3 +1,5 @@
+import { StaticContent } from "@/lib/db/schema/static-contents";
+
 export const BLOG_PREFIX = "blog";
 export const SUBCATEGORIES_PER_PAGE = 12;
 export const POSTS_PER_PAGE = 10;
@@ -27,3 +29,10 @@ export const HAMBURGER_LINKS = [
   { href: "/terms-and-conditions", label: "Terms And Conditions" },
   { href: "/contact", label: "Contact" },
 ] as const;
+
+export const defaultContent = (id: string) =>
+  ({
+    id,
+    title: `${id} title`,
+    body: `The ${id} content is not added in database yet`,
+  }) as StaticContent;

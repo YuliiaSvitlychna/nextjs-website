@@ -1,12 +1,13 @@
 import "dotenv/config";
 import postgres from "postgres";
 import { drizzle } from "drizzle-orm/postgres-js";
+import { sql } from "drizzle-orm";
 import * as schema from "./schema";
 import { categories, Type } from "./schema/categories";
 import { posts, Status, type NewPost } from "./schema/posts";
 import { authors } from "./schema/authors";
 import { postsAuthors } from "./schema/posts-authors";
-import { sql } from "drizzle-orm";
+import { staticContents } from "./schema/static-contents";
 
 const client = postgres(process.env.DATABASE_URL!);
 const db = drizzle(client, { schema });
@@ -15,6 +16,7 @@ async function main() {
   await db.execute(sql`TRUNCATE TABLE "posts" RESTART IDENTITY CASCADE`);
   await db.execute(sql`TRUNCATE TABLE "categories" RESTART IDENTITY CASCADE`);
   await db.execute(sql`TRUNCATE TABLE "authors" RESTART IDENTITY CASCADE`);
+  await db.execute(sql`TRUNCATE TABLE "static_contents" RESTART IDENTITY CASCADE`);
 
   const [tech] = await db
     .insert(categories)
@@ -234,6 +236,17 @@ async function main() {
   });
 
   await db.insert(postsAuthors).values(postsAuthorsValues);
+
+  await db.insert(staticContents).values([
+    { id: "about", title: "About", body: "About content" },
+    { id: "privacy-policy", title: "Privacy Policy", body: "Privacy Policy content" },
+    {
+      id: "terms-and-conditions",
+      title: "Terms and Conditions",
+      body: "Terms and Conditions content",
+    },
+    { id: "contact", title: "Contact", body: "Contact content" },
+  ]);
 }
 
 main()
