@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { DM_Sans, JetBrains_Mono, Source_Serif_4, Syne } from "next/font/google";
 import "./globals.css";
 import "@/styles/themes.scss";
 import "@/styles/reset.scss";
@@ -8,14 +8,29 @@ import { Header } from "@/components/blocks/header/header";
 import { Footer } from "@/components/blocks/footer/footer";
 import { THEME_STORAGE_KEY } from "@/config";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const dmSans = DM_Sans({
+  variable: "--font-ui",
   subsets: ["latin"],
+  weight: ["400", "500", "600"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-code",
   subsets: ["latin"],
+  weight: ["400"],
+});
+
+const sourceSerif4 = Source_Serif_4({
+  variable: "--font-body",
+  subsets: ["latin"],
+  weight: ["400", "600"],
+  style: ["normal", "italic"],
+});
+
+const syne = Syne({
+  variable: "--font-display",
+  subsets: ["latin"],
+  weight: ["600", "700", "800"],
 });
 
 export const metadata: Metadata = {
@@ -36,7 +51,9 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body
+        className={`${dmSans.variable} ${jetbrainsMono.variable} ${sourceSerif4.variable} ${syne.variable} antialiased`}
+      >
         <Header />
         <main>{children}</main>
         <Footer />

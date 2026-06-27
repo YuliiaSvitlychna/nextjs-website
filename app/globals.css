@@ -1,1 +1,12 @@
 @import "tailwindcss";
+
+@theme {
+  --font-ui-label: var(--font-ui);
+  --font-ui-button: var(--font-ui);
+  --font-body-reading: var(--font-body);
+  --font-body-reading-mobile: var(--font-body);
+  --font-display-lg: var(--font-display);
+  --font-display-lg-mobile: var(--font-display);
+  --font-headline-md: var(--font-display);
+  --font-code-block: var(--font-code);
+}
