@@ -32,12 +32,19 @@ body {
 
 main {
   flex: 1 0 auto;
+  padding-top: 4rem;
 }
 
 .container {
-  max-width: 1280px;
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
+}
+
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1200px;
+  }
 }
 
 h1 {

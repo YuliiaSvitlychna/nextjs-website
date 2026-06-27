@@ -2,11 +2,13 @@
 
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { HAMBURGER_MENU_TRANSITION_MS, HAMBURGER_LINKS } from "@/config";
 import styles from "./hamburger-menu.module.scss";
 
 export function HamburgerMenu() {
+  const pathname = usePathname();
   const [isClicked, setIsClicked] = useState(false);
   const [isRendered, setIsRendered] = useState(false);
   const [isOpened, setIsOpened] = useState(false);
@@ -89,11 +91,20 @@ export function HamburgerMenu() {
               <XMarkIcon className={styles.menuIcon} aria-hidden="true" />
             </button>
           </div>
-          {HAMBURGER_LINKS.map(({ href, label }) => (
-            <Link key={href} href={href} className={styles.mobileLink} onClick={close}>
-              {label}
-            </Link>
-          ))}
+          {HAMBURGER_LINKS.map(({ href, label }) => {
+            const isActive = pathname === href;
+
+            return (
+              <Link
+                key={href}
+                href={href}
+                className={`${styles.mobileLink} ${isActive ? styles.mobileLinkActive : ""}`}
+                onClick={close}
+              >
+                {label}
+              </Link>
+            );
+          })}
         </nav>
       ) : null}
     </div>
