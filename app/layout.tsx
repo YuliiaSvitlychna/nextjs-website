@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.scss";
+import "./globals.css";
+import "@/styles/themes.scss";
+import "@/styles/reset.scss";
+import "@/styles/base.scss";
 import { Header } from "@/components/blocks/header/header";
 import { Footer } from "@/components/blocks/footer/footer";
 import { THEME_STORAGE_KEY } from "@/config";
