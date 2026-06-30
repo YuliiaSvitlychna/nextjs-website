@@ -18,3 +18,13 @@
     color: var(--text-primary);
   }
 }
+
+.social-icon {
+  height: 24px;
+  width: 24px;
+  transition: filter 0.2s ease;
+
+  &:hover {
+    filter: invert(100%);
+  }
+}

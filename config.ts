@@ -12,11 +12,15 @@ export const HEADER_LINKS = [
   { href: "/contact", label: "Contact" },
 ] as const;
 
-export const FOOTER_LINKS = [
+export const FOOTER_LINKS_1 = [
   { href: "/", label: "Home" },
+  { href: "/About", label: "About" },
+  { href: "/contact", label: "Contact" },
+] as const;
+
+export const FOOTER_LINKS_2 = [
   { href: "/privacy-policy", label: "Privacy Policy" },
   { href: "/terms-and-conditions", label: "Terms And Conditions" },
-  { href: "/contact", label: "Contact" },
 ] as const;
 
 export const HAMBURGER_MENU_TRANSITION_MS = 220;
