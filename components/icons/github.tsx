@@ -1,10 +1,9 @@
-import Image from 'next/image';
-import gitHubIcon from './github.svg';
+import GitHubIcon from './github.svg?react';
 
 type GitHubProps = {
   className?: string;
 };
 
 export default async function GitHub({ className }: GitHubProps) {
-  return <Image className={className} src={gitHubIcon} alt="GitHub icon" width={24} height={24} />;
+  return <GitHubIcon className={className} />;
 }

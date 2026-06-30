@@ -50,3 +50,13 @@ main {
 h1 {
   font-weight: 700;
 }
+
+::selection {
+  background-color: #65df71;
+  color: #004110;
+}
+
+::-moz-selection {
+  background-color: #65df71;
+  color: #004110;
+}
