@@ -1,7 +1,7 @@
-import { db } from "../client";
-import { staticContents, StaticContent } from "../schema/static-contents";
-import { inArray } from "drizzle-orm";
-import { defaultContent } from "@/config";
+import { db } from '../client';
+import { staticContents, StaticContent } from '../schema/static-contents';
+import { inArray } from 'drizzle-orm';
+import { defaultContent } from '@/config';
 
 export default async function getStaticContents(ids: string[]): Promise<StaticContent[]> {
   const rows = await db.select().from(staticContents).where(inArray(staticContents.id, ids));

@@ -1,6 +1,6 @@
-import { categories, Category, Type } from "../schema/categories";
-import { db } from "../client";
-import { asc, isNull, and, ne } from "drizzle-orm";
+import { categories, Category, Type } from '../schema/categories';
+import { db } from '../client';
+import { asc, isNull, and, ne } from 'drizzle-orm';
 
 export default async function getRootCategories(): Promise<Category[]> {
   return db

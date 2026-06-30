@@ -1,5 +1,5 @@
-import Image from "next/image";
-import gitHubIcon from "./github.svg";
+import Image from 'next/image';
+import gitHubIcon from './github.svg';
 
 type GitHubProps = {
   className?: string;

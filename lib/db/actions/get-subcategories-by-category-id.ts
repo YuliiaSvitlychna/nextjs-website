@@ -1,11 +1,11 @@
-import { categories, Category, Type } from "../schema/categories";
-import { db } from "../client";
-import { eq, asc, sql, and, ne } from "drizzle-orm";
-import { SUBCATEGORIES_PER_PAGE } from "@/config";
+import { categories, Category, Type } from '../schema/categories';
+import { db } from '../client';
+import { eq, asc, sql, and, ne } from 'drizzle-orm';
+import { SUBCATEGORIES_PER_PAGE } from '@/config';
 
 export default async function getSubcategoriesByCategoryId(
   categoryId: string,
-  page: number,
+  page: number
 ): Promise<{ subcategories: Category[]; totalCount: number }> {
   const result = await db
     .select({

@@ -1,5 +1,5 @@
-import Link from "next/link";
-import styles from "./pager.module.scss";
+import Link from 'next/link';
+import styles from './pager.module.scss';
 
 type PropsType = {
   page: number;
@@ -27,8 +27,8 @@ export default function Pager(props: PropsType) {
           <Link
             key={pageNumber}
             href={buildHref(pageNumber)}
-            aria-current={isActive ? "page" : undefined}
-            className={`${styles.link} ${isActive ? styles.activeLink : ""}`.trim()}
+            aria-current={isActive ? 'page' : undefined}
+            className={`${styles.link} ${isActive ? styles.activeLink : ''}`.trim()}
           >
             {pageNumber}
           </Link>

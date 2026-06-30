@@ -1,7 +1,7 @@
-import { sql } from "drizzle-orm";
-import { db } from "../client";
-import { categories } from "../schema/categories";
-import { posts, Status } from "../schema/posts";
+import { sql } from 'drizzle-orm';
+import { db } from '../client';
+import { categories } from '../schema/categories';
+import { posts, Status } from '../schema/posts';
 
 export type SitemapPostRow = {
   fullPath: string;

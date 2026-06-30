@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { ThemeToggle } from "@/components/blocks/header/theme-toggle/theme-toggle";
-import { HamburgerMenu } from "./hamburger/hamburger-menu";
-import { HEADER_LINKS } from "@/config";
-import styles from "./header.module.scss";
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { ThemeToggle } from '@/components/blocks/header/theme-toggle/theme-toggle';
+import { HamburgerMenu } from './hamburger/hamburger-menu';
+import { HEADER_LINKS } from '@/config';
+import styles from './header.module.scss';
 
 export function Header() {
   const pathname = usePathname();
@@ -24,11 +24,7 @@ export function Header() {
             const isActive = pathname === href;
 
             return (
-              <Link
-                key={href}
-                href={href}
-                className={`${styles.link} ${isActive ? styles.linkActive : ""}`}
-              >
+              <Link key={href} href={href} className={`${styles.link} ${isActive ? styles.linkActive : ''}`}>
                 {label}
               </Link>
             );

@@ -1,12 +1,12 @@
-export { contactMetadata as metadata } from "@/lib/seo/static";
-import { JsonLd } from "@/components/seo/json-ld";
-import { contactSchema } from "@/lib/seo/static";
-import getStaticContent from "@/lib/db/actions/get-static-content";
-import { mdToHtml } from "@/lib/content/md-to-html";
-import "./page.module.scss";
+export { contactMetadata as metadata } from '@/lib/seo/static';
+import { JsonLd } from '@/components/seo/json-ld';
+import { contactSchema } from '@/lib/seo/static';
+import getStaticContent from '@/lib/db/actions/get-static-content';
+import { mdToHtml } from '@/lib/content/md-to-html';
+import './page.module.scss';
 
 export default async function ContactPage() {
-  const content = await getStaticContent("contact");
+  const content = await getStaticContent('contact');
 
   return (
     <>

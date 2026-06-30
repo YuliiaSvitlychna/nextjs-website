@@ -1,16 +1,16 @@
-import { db } from "../client";
-import { categories } from "../schema/categories";
-import { posts, Post } from "../schema/posts";
-import { sql } from "drizzle-orm";
-import { postsAuthors } from "@/lib/db/schema/posts-authors";
-import { authors } from "@/lib/db/schema/authors";
+import { db } from '../client';
+import { categories } from '../schema/categories';
+import { posts, Post } from '../schema/posts';
+import { sql } from 'drizzle-orm';
+import { postsAuthors } from '@/lib/db/schema/posts-authors';
+import { authors } from '@/lib/db/schema/authors';
 
 export default async function getPostByFullPath(slugs: string[]): Promise<Post | null> {
   if (slugs.length === 0) return null;
 
   const slugsCopy = [...slugs];
   const postSlug = slugsCopy.pop();
-  const categoryPath = slugsCopy.join("/");
+  const categoryPath = slugsCopy.join('/');
 
   try {
     const rows = await db.execute(sql`
@@ -54,7 +54,7 @@ export default async function getPostByFullPath(slugs: string[]): Promise<Post |
 
     return rows[0] as Post;
   } catch (error) {
-    console.error("Error while searching for post by path:", error);
+    console.error('Error while searching for post by path:', error);
     return null;
   }
 }

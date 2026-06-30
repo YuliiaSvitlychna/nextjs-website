@@ -1,6 +1,6 @@
-import { sql } from "drizzle-orm";
-import { db } from "../client";
-import { categories } from "../schema/categories";
+import { sql } from 'drizzle-orm';
+import { db } from '../client';
+import { categories } from '../schema/categories';
 
 export type SitemapCategoryRow = {
   fullPath: string;

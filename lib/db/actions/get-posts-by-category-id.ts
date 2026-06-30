@@ -1,21 +1,19 @@
-import { posts, Post, Status } from "../schema/posts";
-import { db } from "../client";
-import { eq, desc, sql, and } from "drizzle-orm";
-import { POSTS_PER_PAGE } from "@/config";
-import { postsAuthors } from "../schema/posts-authors";
-import { authors, type Author } from "../schema/authors";
+import { posts, Post, Status } from '../schema/posts';
+import { db } from '../client';
+import { eq, desc, sql, and } from 'drizzle-orm';
+import { POSTS_PER_PAGE } from '@/config';
+import { postsAuthors } from '../schema/posts-authors';
+import { authors, type Author } from '../schema/authors';
 
 export default async function getPostsByCategoryId(
   categoryId: string,
-  page: number,
+  page: number
 ): Promise<{ posts: Post[]; totalCount: number }> {
   const rows = await db
     .select({
       post: posts,
-      authors: sql<
-        Author[]
-      >`COALESCE(json_agg(${authors}.*) FILTER (WHERE ${authors}.id IS NOT NULL), '[]')`.mapWith(
-        (val) => (typeof val === "string" ? JSON.parse(val) : val),
+      authors: sql<Author[]>`COALESCE(json_agg(${authors}.*) FILTER (WHERE ${authors}.id IS NOT NULL), '[]')`.mapWith(
+        (val) => (typeof val === 'string' ? JSON.parse(val) : val)
       ),
       totalCount: sql<number>`count(*) OVER()`.mapWith(Number),
     })

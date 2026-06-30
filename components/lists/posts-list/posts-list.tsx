@@ -1,10 +1,10 @@
-import { notFound } from "next/navigation";
-import Link from "next/link";
-import { Category } from "@/lib/db/schema/categories";
-import getPostsByCategoryId from "@/lib/db/actions/get-posts-by-category-id";
-import Pager from "@/components/blocks/pager/pager";
-import { POSTS_PER_PAGE, BLOG_PREFIX } from "@/config";
-import "./posts-list.module.scss";
+import { notFound } from 'next/navigation';
+import Link from 'next/link';
+import { Category } from '@/lib/db/schema/categories';
+import getPostsByCategoryId from '@/lib/db/actions/get-posts-by-category-id';
+import Pager from '@/components/blocks/pager/pager';
+import { POSTS_PER_PAGE, BLOG_PREFIX } from '@/config';
+import './posts-list.module.scss';
 
 type PropsType = {
   category: Category;
@@ -20,7 +20,7 @@ export default async function PostsList(props: PropsType) {
     notFound();
   }
 
-  const categoryPath = `/${BLOG_PREFIX}/${slugs.join("/")}`;
+  const categoryPath = `/${BLOG_PREFIX}/${slugs.join('/')}`;
 
   return (
     <div className="posts-list">

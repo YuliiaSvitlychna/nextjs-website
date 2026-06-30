@@ -1,5 +1,5 @@
-import Image from "next/image";
-import xIcon from "./x.svg";
+import Image from 'next/image';
+import xIcon from './x.svg';
 
 type XProps = {
   className?: string;

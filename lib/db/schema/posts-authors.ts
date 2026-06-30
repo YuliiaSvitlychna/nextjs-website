@@ -1,19 +1,19 @@
-import { pgTable, uuid, primaryKey } from "drizzle-orm/pg-core";
-import { type InferSelectModel, type InferInsertModel } from "drizzle-orm";
-import { posts } from "./posts";
-import { authors } from "./authors";
+import { pgTable, uuid, primaryKey } from 'drizzle-orm/pg-core';
+import { type InferSelectModel, type InferInsertModel } from 'drizzle-orm';
+import { posts } from './posts';
+import { authors } from './authors';
 
 export const postsAuthors = pgTable(
-  "posts_authors",
+  'posts_authors',
   {
-    postId: uuid("post_id")
+    postId: uuid('post_id')
       .notNull()
-      .references(() => posts.id, { onDelete: "cascade" }),
-    authorId: uuid("author_id")
+      .references(() => posts.id, { onDelete: 'cascade' }),
+    authorId: uuid('author_id')
       .notNull()
-      .references(() => authors.id, { onDelete: "cascade" }),
+      .references(() => authors.id, { onDelete: 'cascade' }),
   },
-  (table) => [primaryKey({ columns: [table.postId, table.authorId] })],
+  (table) => [primaryKey({ columns: [table.postId, table.authorId] })]
 );
 
 export type PostsAuthors = InferSelectModel<typeof postsAuthors>;

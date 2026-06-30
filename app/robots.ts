@@ -1,4 +1,4 @@
-import type { MetadataRoute } from "next";
+import type { MetadataRoute } from 'next';
 
 export default function robots(): MetadataRoute.Robots {
   const siteUrl = process.env.PUBLIC_SITE_URL;
@@ -7,8 +7,8 @@ export default function robots(): MetadataRoute.Robots {
     host: siteUrl,
     sitemap: `${siteUrl}/sitemap.xml`,
     rules: {
-      userAgent: "*",
-      allow: "/",
+      userAgent: '*',
+      allow: '/',
     },
   };
 }

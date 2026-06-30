@@ -1,11 +1,11 @@
-import { db } from "../client";
-import { categories, Category } from "../schema/categories";
-import { sql } from "drizzle-orm";
+import { db } from '../client';
+import { categories, Category } from '../schema/categories';
+import { sql } from 'drizzle-orm';
 
 export default async function getCategoryByFullPath(slugs: string[]): Promise<Category | null> {
   if (slugs.length === 0) return null;
 
-  const fullPath = slugs.join("/");
+  const fullPath = slugs.join('/');
 
   try {
     const rows = await db.execute(sql`
@@ -35,7 +35,7 @@ export default async function getCategoryByFullPath(slugs: string[]): Promise<Ca
 
     return rows[0] as Category;
   } catch (error) {
-    console.error("Error while searching for category by path:", error);
+    console.error('Error while searching for category by path:', error);
     return null;
   }
 }

@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import { useEffect, useState } from "react";
-import { MoonIcon, SunIcon } from "@heroicons/react/24/outline";
-import { applyTheme, getThemeFromDocument, type Theme } from "@/lib/theme";
-import styles from "./theme-toggle.module.scss";
+import { useEffect, useState } from 'react';
+import { MoonIcon, SunIcon } from '@heroicons/react/24/outline';
+import { applyTheme, getThemeFromDocument, type Theme } from '@/lib/theme';
+import styles from './theme-toggle.module.scss';
 
 export function ThemeToggle() {
-  const [theme, setTheme] = useState<Theme>("dark");
+  const [theme, setTheme] = useState<Theme>('dark');
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -16,7 +16,7 @@ export function ThemeToggle() {
   }, []);
 
   const toggle = () => {
-    const next: Theme = theme === "dark" ? "light" : "dark";
+    const next: Theme = theme === 'dark' ? 'light' : 'dark';
     applyTheme(next);
     setTheme(next);
   };
@@ -27,16 +27,10 @@ export function ThemeToggle() {
       className={styles.toggle}
       onClick={toggle}
       disabled={!mounted}
-      aria-label={
-        mounted
-          ? theme === "dark"
-            ? "Switch to light mode"
-            : "Switch to dark mode"
-          : "Toggle theme"
-      }
+      aria-label={mounted ? (theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode') : 'Toggle theme'}
     >
       {mounted ? (
-        theme === "dark" ? (
+        theme === 'dark' ? (
           <MoonIcon className={styles.icon} aria-hidden="true" />
         ) : (
           <SunIcon className={styles.icon} aria-hidden="true" />

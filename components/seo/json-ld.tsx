@@ -1,5 +1,5 @@
-import Script from "next/script";
-import { WithContext, Thing } from "schema-dts";
+import Script from 'next/script';
+import { WithContext, Thing } from 'schema-dts';
 
 type PropsType = {
   schema: WithContext<Thing>;
@@ -22,10 +22,5 @@ export function JsonLdHead(props: PropsType) {
 export function JsonLd(props: PropsType) {
   const { schema } = props;
 
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-    />
-  );
+  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />;
 }

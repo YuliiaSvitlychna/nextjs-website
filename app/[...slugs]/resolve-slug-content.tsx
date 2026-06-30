@@ -1,20 +1,20 @@
-import { notFound } from "next/navigation";
-import { Metadata } from "next";
-import { ReactNode, cache } from "react";
-import { WithContext, Thing } from "schema-dts";
-import getCategoryByFullPath from "@/lib/db/actions/get-category-by-full-path";
-import getPostByFullPath from "@/lib/db/actions/get-post-by-full-path";
-import PostWrapper from "@/components/wrappers/post-wrapper/post-wrapper";
-import CategoryWrapper from "@/components/wrappers/category-wrapper/category-wrapper";
-import PostsList from "@/components/lists/posts-list/posts-list";
-import SubcategoriesList from "@/components/lists/subcategories-list/subcategories-list";
-import { Status } from "@/lib/db/schema/posts";
-import { Type } from "@/lib/db/schema/categories";
-import { BLOG_PREFIX } from "@/config";
-import { generateCategoryMetadata, generateCategorySchema } from "@/lib/seo/category";
-import { generatePostMetadata, generatePostSchema } from "@/lib/seo/post";
-import { PostAuthorsList } from "@/components/lists/post-authors-list/post-authors-list";
-import { mdToHtml } from "@/lib/content/md-to-html";
+import { notFound } from 'next/navigation';
+import { Metadata } from 'next';
+import { ReactNode, cache } from 'react';
+import { WithContext, Thing } from 'schema-dts';
+import getCategoryByFullPath from '@/lib/db/actions/get-category-by-full-path';
+import getPostByFullPath from '@/lib/db/actions/get-post-by-full-path';
+import PostWrapper from '@/components/wrappers/post-wrapper/post-wrapper';
+import CategoryWrapper from '@/components/wrappers/category-wrapper/category-wrapper';
+import PostsList from '@/components/lists/posts-list/posts-list';
+import SubcategoriesList from '@/components/lists/subcategories-list/subcategories-list';
+import { Status } from '@/lib/db/schema/posts';
+import { Type } from '@/lib/db/schema/categories';
+import { BLOG_PREFIX } from '@/config';
+import { generateCategoryMetadata, generateCategorySchema } from '@/lib/seo/category';
+import { generatePostMetadata, generatePostSchema } from '@/lib/seo/post';
+import { PostAuthorsList } from '@/components/lists/post-authors-list/post-authors-list';
+import { mdToHtml } from '@/lib/content/md-to-html';
 
 export const resolveSlugContentCached = cache(async (page: number, ...slugs: string[]) => {
   return resolveSlugContent(slugs, page);
@@ -22,9 +22,9 @@ export const resolveSlugContentCached = cache(async (page: number, ...slugs: str
 
 export async function resolveSlugContent(
   slugs: string[],
-  page: number = 1,
+  page: number = 1
 ): Promise<{ metadata: Metadata; schema: WithContext<Thing>; reactNode: ReactNode }> {
-  const prefixSlugs = BLOG_PREFIX.split("/");
+  const prefixSlugs = BLOG_PREFIX.split('/');
   prefixSlugs.forEach((prefixSlug) => {
     if (prefixSlug !== slugs.shift()) {
       notFound();

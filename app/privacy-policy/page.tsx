@@ -1,12 +1,12 @@
-export { privacyPolicyMetadata as metadata } from "@/lib/seo/static";
-import { JsonLd } from "@/components/seo/json-ld";
-import { privacyPolicySchema } from "@/lib/seo/static";
-import getStaticContent from "@/lib/db/actions/get-static-content";
-import { mdToHtml } from "@/lib/content/md-to-html";
-import "./page.module.scss";
+export { privacyPolicyMetadata as metadata } from '@/lib/seo/static';
+import { JsonLd } from '@/components/seo/json-ld';
+import { privacyPolicySchema } from '@/lib/seo/static';
+import getStaticContent from '@/lib/db/actions/get-static-content';
+import { mdToHtml } from '@/lib/content/md-to-html';
+import './page.module.scss';
 
 export default async function PrivacyPage() {
-  const content = await getStaticContent("privacy-policy");
+  const content = await getStaticContent('privacy-policy');
 
   return (
     <>

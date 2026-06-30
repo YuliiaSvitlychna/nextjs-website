@@ -1,6 +1,6 @@
-import Image from "next/image";
-import { type Author } from "@/lib/db/schema/authors";
-import styles from "./post-authors-list.module.scss";
+import Image from 'next/image';
+import { type Author } from '@/lib/db/schema/authors';
+import styles from './post-authors-list.module.scss';
 
 interface PostAuthorsListProps {
   authors: Author[];
@@ -11,7 +11,7 @@ export function PostAuthorsList({ authors }: PostAuthorsListProps) {
 
   return (
     <div className={styles.container}>
-      <span className={styles.label}>{authors.length > 1 ? "Authors:" : "Author:"}</span>
+      <span className={styles.label}>{authors.length > 1 ? 'Authors:' : 'Author:'}</span>
 
       <div className={styles.list}>
         {authors.map((author) => (
