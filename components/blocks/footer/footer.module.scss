@@ -1,26 +1,91 @@
 .footer {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 1.25rem;
-  padding: 2rem 1.5rem;
   margin-top: auto;
+  padding: 3.75rem 0;
   border-top: 1px solid var(--border);
   background: var(--bg-base);
 }
 
+.inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.logo {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.025em;
+  text-decoration: none;
+}
+
+.copyright {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  font-family: var(--font-ui);
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-title {
+  color: var(--text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.056rem;
+  font-family: var(--font-ui);
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
 .link {
+  font-family: var(--font-ui);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-secondary);
   text-decoration: none;
   transition: color 0.15s ease;
-  color: #becdb9;
+  width: fit-content;
+  text-transform: uppercase;
+
+  &:hover {
+    color: var(--accent);
+  }
+
+  a {
+    margin-bottom: 0.5rem;
+  }
+}
+
+.social {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.social-icons {
+  display: flex;
+  gap: 0.75rem;
 }
 
 .social-icon {
+  display: block;
   height: 24px;
   width: 24px;
-  transition: filter 0.2s ease;
-
-  &:hover {
-    color: #65df71;
-  }
 }

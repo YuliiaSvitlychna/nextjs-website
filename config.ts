@@ -14,7 +14,7 @@ export const HEADER_LINKS = [
 
 export const FOOTER_LINKS_1 = [
   { href: '/', label: 'Home' },
-  { href: '/About', label: 'About' },
+  { href: '/about', label: 'About' },
   { href: '/contact', label: 'Contact' },
 ] as const;
 
