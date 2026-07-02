@@ -6,7 +6,10 @@
   --font-body-reading: var(--font-body);
   --font-body-reading-mobile: var(--font-body);
   --font-display-lg: var(--font-display);
-  --font-display-lg-mobile: var(--font-display);
-  --font-headline-md: var(--font-display);
   --font-code-block: var(--font-code);
+
+  --text-headline-xl: 48px;
+  --text-headline-xl--line-height: 1.1;
+  --text-headline-xl--letter-spacing: -0.02em;
+  --text-headline-xl--font-weight: 700;
 }
