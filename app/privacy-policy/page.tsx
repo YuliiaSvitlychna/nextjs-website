@@ -10,7 +10,7 @@ export default async function PrivacyPage() {
 
   return (
     <>
-      <div className="max-w-[740px] mx-auto pt-8 pb-16">
+      <article className="max-w-[740px] mx-auto pt-8 pb-16">
         <header className="border-b border-[var(--border)] pb-6 mb-12">
           <h1 className="text-headline-xl text-[var(--text-primary)]" style={{ fontFamily: 'var(--font-display)' }}>
             {content.title}
@@ -21,7 +21,7 @@ export default async function PrivacyPage() {
           dangerouslySetInnerHTML={{ __html: await mdToHtml(content.body) }}
           style={{ fontFamily: 'var(--font-ui)' }}
         />
-      </div>
+      </article>
       <JsonLd schema={privacyPolicySchema} />
     </>
   );
