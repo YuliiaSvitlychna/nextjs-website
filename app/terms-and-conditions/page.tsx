@@ -3,7 +3,6 @@ import { JsonLd } from '@/components/seo/json-ld';
 import { termsAndConditionsSchema } from '@/lib/seo/static';
 import getStaticContent from '@/lib/db/actions/get-static-content';
 import { mdToHtml } from '@/lib/content/md-to-html';
-import './page.module.scss';
 import styles from './page.module.scss';
 
 export default async function TermsAndConditionsPage() {
@@ -13,12 +12,15 @@ export default async function TermsAndConditionsPage() {
     <>
       <article className="max-w-[740px] mx-auto pt-8 pb-16">
         <header className="border-b border-[var(--border)] pb-6 mb-12">
-          <h1 className={`${styles.heading} text-headline-xl text-[var(--text-primary)]`} style={{ fontFamily: 'var(--font-display)' }}>
+          <h1
+            className={`${styles.heading} text-headline-xl text-[var(--text-primary)]`}
+            style={{ fontFamily: 'var(--font-display)' }}
+          >
             {content.title}
           </h1>
         </header>
         <div
-          className={`${styles.prose} text-xl text-[var(--text-secondary)]`}
+          className={`prose text-xl text-[var(--text-secondary)]`}
           dangerouslySetInnerHTML={{ __html: await mdToHtml(content.body) }}
           style={{ fontFamily: 'var(--font-ui)' }}
         />

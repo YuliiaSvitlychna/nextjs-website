@@ -263,6 +263,11 @@ async function main() {
       label: 'X',
       value: 'http://x.com/',
     },
+    {
+      id: 'contact_email',
+      label: 'Contact Email',
+      value: 'hello@dev-signal.com',
+    },
   ]);
 }
 

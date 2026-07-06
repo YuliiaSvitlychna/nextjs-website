@@ -3,7 +3,6 @@ import { JsonLd } from '@/components/seo/json-ld';
 import { privacyPolicySchema } from '@/lib/seo/static';
 import getStaticContent from '@/lib/db/actions/get-static-content';
 import { mdToHtml } from '@/lib/content/md-to-html';
-import styles from './page.module.scss';
 
 export default async function PrivacyPage() {
   const content = await getStaticContent('privacy-policy');
@@ -17,7 +16,7 @@ export default async function PrivacyPage() {
           </h1>
         </header>
         <div
-          className={`${styles.prose} text-xl text-[var(--text-secondary)]`}
+          className={`prose text-xl text-[var(--text-secondary)]`}
           dangerouslySetInnerHTML={{ __html: await mdToHtml(content.body) }}
           style={{ fontFamily: 'var(--font-ui)' }}
         />
