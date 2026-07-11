@@ -34,8 +34,7 @@ export async function resolveSlugContent(
     const metadata = generateCategoryMetadata(category, slugs);
     const schema = generateCategorySchema(category, slugs);
     const reactNode = (
-      <CategoryWrapper>
-        <h1>{category.title}</h1>
+      <CategoryWrapper title={category.title} description={category.seo_description} slugs={slugs}>
         <SubcategoriesList category={category} page={page} slugs={slugs} />
         <PostsList category={category} page={page} slugs={slugs} />
       </CategoryWrapper>
@@ -45,8 +44,7 @@ export async function resolveSlugContent(
     const metadata = generateCategoryMetadata(category, slugs);
     const schema = generateCategorySchema(category, slugs);
     const reactNode = (
-      <CategoryWrapper>
-        <h1>{category.title}</h1>
+      <CategoryWrapper title={category.title} description={category.seo_description} slugs={slugs}>
         <SubcategoriesList category={category} page={page} slugs={slugs} />
       </CategoryWrapper>
     );
@@ -55,8 +53,7 @@ export async function resolveSlugContent(
     const metadata = generateCategoryMetadata(category, slugs);
     const schema = generateCategorySchema(category, slugs);
     const reactNode = (
-      <CategoryWrapper>
-        <h1>{category.title}</h1>
+      <CategoryWrapper title={category.title} description={category.seo_description} slugs={slugs}>
         <PostsList category={category} page={page} slugs={slugs} />
       </CategoryWrapper>
     );

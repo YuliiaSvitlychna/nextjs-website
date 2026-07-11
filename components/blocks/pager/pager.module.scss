@@ -1,14 +1,25 @@
 .pager {
   display: flex;
+  justify-content: center;
   align-items: center;
-  gap: 0.5rem;
+  gap: 8px;
+  margin-top: 32px;
 }
 
 .link {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  background-color: var(--bg-surface);
   border: 1px solid var(--border);
-  border-radius: 0.375rem;
-  padding: 0.25rem 0.75rem;
-  color: var(--text-primary);
+  color: var(--text-secondary);
+  font-family: var(--font-ui);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1;
   text-decoration: none;
   transition:
     border-color 0.15s ease,
@@ -21,7 +32,8 @@
 }
 
 .activeLink {
+  background-color: var(--accent);
   border-color: var(--accent);
-  color: var(--accent);
+  color: var(--on-accent);
   font-weight: 600;
 }
