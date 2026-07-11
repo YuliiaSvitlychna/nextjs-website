@@ -13,8 +13,6 @@ import { Type } from '@/lib/db/schema/categories';
 import { BLOG_PREFIX } from '@/config';
 import { generateCategoryMetadata, generateCategorySchema } from '@/lib/seo/category';
 import { generatePostMetadata, generatePostSchema } from '@/lib/seo/post';
-import { PostAuthorsList } from '@/components/lists/post-authors-list/post-authors-list';
-import { mdToHtml } from '@/lib/content/md-to-html';
 
 export const resolveSlugContentCached = cache(async (page: number, ...slugs: string[]) => {
   return resolveSlugContent(slugs, page);
@@ -70,13 +68,9 @@ export async function resolveSlugContent(
     const metadata = generatePostMetadata(post, slugs);
     const schema = generatePostSchema(post, slugs);
 
-    const reactNode = (
-      <PostWrapper>
-        <h1>{post.title}</h1>
-        <div dangerouslySetInnerHTML={{ __html: await mdToHtml(post.body) }} />
-        <PostAuthorsList authors={post.authors} />
-      </PostWrapper>
-    );
+    const categorySlugs = slugs.slice(0, -1);
+
+    const reactNode = <PostWrapper post={post} categorySlugs={categorySlugs} />;
 
     return { metadata, schema, reactNode };
   }

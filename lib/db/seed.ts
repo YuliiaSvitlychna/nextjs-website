@@ -370,17 +370,17 @@ For corrections to published articles, please include the article URL and a clea
     {
       id: 'social_link_linkedin',
       label: 'Linkedin',
-      value: 'http://linkedin.com/',
+      value: 'https://linkedin.com/',
     },
     {
       id: 'social_link_x',
       label: 'X',
-      value: 'http://x.com/',
+      value: 'https://x.com/',
     },
     {
       id: 'contact_email',
       label: 'Contact Email',
-      value: 'hello@dev-signal.com',
+      value: 'hello@nextjs-glog',
     },
   ]);
 }
