@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { HAMBURGER_MENU_TRANSITION_MS, HAMBURGER_LINKS } from '@/config';
 import styles from './hamburger-menu.module.scss';
+import { createPortal } from 'react-dom';
 
 export function HamburgerMenu() {
   const pathname = usePathname();
@@ -74,7 +75,7 @@ export function HamburgerMenu() {
         <Bars3Icon className={styles.menuIcon} aria-hidden="true" />
       </button>
 
-      {isRendered ? (
+      {isRendered && typeof document !== 'undefined'? createPortal (
         <nav
           id="mobile-nav-panel"
           className={`${styles.mobileMenuOverlay} ${isOpened ? styles.mobileMenuOverlayVisible : ''}`}
@@ -100,7 +101,8 @@ export function HamburgerMenu() {
               </Link>
             );
           })}
-        </nav>
+        </nav>, 
+        document.body 
       ) : null}
     </div>
   );
