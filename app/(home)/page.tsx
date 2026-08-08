@@ -3,8 +3,12 @@ import { homeSchema } from '@/lib/seo/static';
 import { JsonLd } from '@/components/seo/json-ld';
 import styles from './page.module.scss';
 import Image from 'next/image';
+import getFeaturedPosts from '@/lib/db/actions/get-featured-posts';
+import Link from 'next/link';
 
-export default function HomePage() {
+export default async function HomePage() {
+  const featuredPosts = await getFeaturedPosts();
+
   return (
     <>
       <section className={styles.hero}>
@@ -141,32 +145,30 @@ export default function HomePage() {
             </a>
           </div>
           <div className={styles.featuredList}>
-            <article className={styles.postCard}>
-              <span className={styles.postTag}>ARCHITECTURE</span>
-              <h3 className={styles.postTitle}>Scaling Vector Databases: Lessons from the Frontend of AI Search</h3>
-              <p className={styles.postExcerpt}>
-                Navigating the complexities of HNSW indexes and metadata filtering at petabyte scale. Why we moved away
-                from monolithic solutions for a distributed retrieval-augmented generation pipeline.
-              </p>
-              <div className={styles.postMeta}>
-                <span className={styles.postAuthor}>Marcus Thorne</span>
-                <span className={styles.postDot}>•</span>
-                <span className={styles.postDate}>Oct 24, 2024</span>
-              </div>
-            </article>
-            <article className={styles.postCard}>
-              <span className={styles.postTag}>ENGINEERING</span>
-              <h3 className={styles.postTitle}>Rust vs. C++: The Memory Safety Dilemma in Modern Kernel Dev</h3>
-              <p className={styles.postExcerpt}>
-                An objective analysis of compile-time guarantees versus legacy performance. We dive into real
-                performance overhead benchmarks and the cognitive load of the borrow checker in large-scale systems.
-              </p>
-              <div className={styles.postMeta}>
-                <span className={styles.postAuthor}>Lena Volkov</span>
-                <span className={styles.postDot}>•</span>
-                <span className={styles.postDate}>Oct 21, 2024</span>
-              </div>
-            </article>
+            {featuredPosts.map((post) => {
+              const formattedDate = new Date(post.createdAt).toLocaleDateString('en-US', {
+                month: 'short',
+                day: 'numeric',
+                year: 'numeric',
+              });
+
+              const authorsNames = post.authors?.length ? post.authors.map((a) => a.name).join(', ') : 'Anonymous';
+
+              return (
+                <Link key={post.id} href={`/blog/${post.path}`} className={styles.postCardLink}>
+                  <article key={post.id} className={styles.postCard}>
+                    <h3 className={styles.postTitle}>{post.title}</h3>
+                    <p className={styles.postExcerpt}>{post.teaser}</p>
+
+                    <div className={styles.postMeta}>
+                      <span className={styles.postAuthor}>{authorsNames}</span>
+                      <span className={styles.postDot}>•</span>
+                      <span className={styles.postDate}>{formattedDate}</span>
+                    </div>
+                  </article>
+                </Link>
+              );
+            })}
           </div>
         </div>
       </section>

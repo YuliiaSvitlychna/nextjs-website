@@ -71,6 +71,13 @@
       "when": 1782499567876,
       "tag": "0009_concerned_forge",
       "breakpoints": true
+    },
+    {
+      "idx": 10,
+      "version": "7",
+      "when": 1784664007157,
+      "tag": "0010_broken_penance",
+      "breakpoints": true
     }
   ]
 }

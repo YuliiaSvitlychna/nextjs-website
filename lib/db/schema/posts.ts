@@ -22,6 +22,7 @@ export const posts = pgTable(
       .notNull()
       .references(() => categories.id),
     status: postStatusEnum('status').default(Status.Published).notNull(),
+    isFeatured: boolean('is_featured').default(false),
     seo_description: text('seo_description'),
     og_image: varchar('og_image', { length: 1024 }),
     is_sitemap: boolean('is_sitemap').default(true),
@@ -35,5 +36,5 @@ export const posts = pgTable(
   ]
 );
 
-export type Post = InferSelectModel<typeof posts> & { authors: Author[] };
+export type Post = InferSelectModel<typeof posts> & { authors: Author[]; path?: string };
 export type NewPost = InferInsertModel<typeof posts>;
