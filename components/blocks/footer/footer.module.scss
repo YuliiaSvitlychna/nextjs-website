@@ -12,10 +12,6 @@
   max-width: 1280px;
   margin: 0 auto;
   padding: 0 1.5rem;
-
-  @media (min-width: 768px) {
-    grid-template-columns: repeat(4, 1fr);
-  }
 }
 
 .brand {
@@ -86,6 +82,31 @@
 
 .social-icon {
   display: block;
-  height: 24px;
-  width: 24px;
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+@media (min-width: $breakpoint-sm) {
+  .inner {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media screen and (max-width: $breakpoint-md) {
+  .footer {
+    padding: 2.5rem 0;
+  }
+
+  .inner {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+}
+
+// Four columns are too narrow to hold the nav labels at tablet width.
+@media screen and (min-width: $breakpoint-sm) and (max-width: $breakpoint-md) {
+  .inner {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem 1.5rem;
+  }
 }

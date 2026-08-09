@@ -8,7 +8,7 @@
   --font-display-lg: var(--font-display);
   --font-code-block: var(--font-code);
 
-  --text-headline-xl: 48px;
+  --text-headline-xl: 3rem;
   --text-headline-xl--line-height: 1.1;
   --text-headline-xl--letter-spacing: -0.02em;
   --text-headline-xl--font-weight: 700;

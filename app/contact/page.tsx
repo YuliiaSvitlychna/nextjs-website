@@ -47,7 +47,7 @@ export default async function ContactPage() {
                   <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
                 </svg>
               </div>
-              <div>
+              <div className={styles.cardText}>
                 <p className={styles.cardLabel}>Direct Inquiries</p>
                 <p className={styles.cardTitle}>{email}</p>
               </div>
@@ -58,7 +58,7 @@ export default async function ContactPage() {
               <div className={`${styles.iconBox} ${styles.iconBoxBorder}`}>
                 <LinkedInContact className={styles.icon} aria-hidden="true" />
               </div>
-              <div>
+              <div className={styles.cardText}>
                 <p className={styles.cardLabel}>Official Page</p>
                 <p className={styles.cardTitle}>LinkedIn</p>
               </div>
@@ -69,7 +69,7 @@ export default async function ContactPage() {
               <div className={`${styles.iconBox} ${styles.iconBoxBorder}`}>
                 <XContact className={styles.icon} aria-hidden="true" />
               </div>
-              <div>
+              <div className={styles.cardText}>
                 <p className={styles.cardLabel}>Latest Updates</p>
                 <p className={styles.cardTitle}>Twitter / X</p>
               </div>

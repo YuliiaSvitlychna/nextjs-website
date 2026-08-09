@@ -74,3 +74,15 @@
     display: flex;
   }
 }
+
+// Align the header gutter with the content column's 1.25rem.
+@media screen and (max-width: $breakpoint-md) {
+  .inner {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+
+  .nav {
+    gap: 1.5rem;
+  }
+}

@@ -1,5 +1,5 @@
 .list {
-  max-width: 740px;
+  max-width: 46.25rem;
   margin: 0 auto;
   padding: 2rem 1.25rem 4rem;
 }
@@ -14,9 +14,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px 0;
+  padding: 1.25rem 0;
   font-family: var(--font-ui);
-  font-size: 18px;
+  font-size: 1.125rem;
   font-weight: 500;
   line-height: 1.4;
   color: var(--text-primary);
@@ -48,6 +48,13 @@
   }
 
   .link {
-    font-size: 20px;
+    font-size: 1.25rem;
+  }
+}
+
+@media screen and (max-width: $breakpoint-md) {
+  .list {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
   }
 }

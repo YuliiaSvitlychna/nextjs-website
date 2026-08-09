@@ -75,35 +75,37 @@ export function HamburgerMenu() {
         <Bars3Icon className={styles.menuIcon} aria-hidden="true" />
       </button>
 
-      {isRendered && typeof document !== 'undefined'? createPortal (
-        <nav
-          id="mobile-nav-panel"
-          className={`${styles.mobileMenuOverlay} ${isOpened ? styles.mobileMenuOverlayVisible : ''}`}
-          aria-label="Main"
-          aria-hidden={!isClicked}
-        >
-          <div className={styles.mobileMenuTopBar}>
-            <button type="button" className={styles.menuButton} onClick={close} aria-label="Close menu">
-              <XMarkIcon className={styles.menuIcon} aria-hidden="true" />
-            </button>
-          </div>
-          {HAMBURGER_LINKS.map(({ href, label }) => {
-            const isActive = pathname === href;
+      {isRendered && typeof document !== 'undefined'
+        ? createPortal(
+            <nav
+              id="mobile-nav-panel"
+              className={`${styles.mobileMenuOverlay} ${isOpened ? styles.mobileMenuOverlayVisible : ''}`}
+              aria-label="Main"
+              aria-hidden={!isClicked}
+            >
+              <div className={styles.mobileMenuTopBar}>
+                <button type="button" className={styles.menuButton} onClick={close} aria-label="Close menu">
+                  <XMarkIcon className={styles.menuIcon} aria-hidden="true" />
+                </button>
+              </div>
+              {HAMBURGER_LINKS.map(({ href, label }) => {
+                const isActive = pathname === href;
 
-            return (
-              <Link
-                key={href}
-                href={href}
-                className={`${styles.mobileLink} ${isActive ? styles.mobileLinkActive : ''}`}
-                onClick={close}
-              >
-                {label}
-              </Link>
-            );
-          })}
-        </nav>, 
-        document.body 
-      ) : null}
+                return (
+                  <Link
+                    key={href}
+                    href={href}
+                    className={`${styles.mobileLink} ${isActive ? styles.mobileLinkActive : ''}`}
+                    onClick={close}
+                  >
+                    {label}
+                  </Link>
+                );
+              })}
+            </nav>,
+            document.body
+          )
+        : null}
     </div>
   );
 }

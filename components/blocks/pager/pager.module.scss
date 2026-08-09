@@ -2,13 +2,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 8px;
-  margin-top: 32px;
+  gap: 0.5rem;
+  margin-top: 2rem;
 }
 
 .link {
-  width: 40px;
-  height: 40px;
+  width: 2.5rem;
+  height: 2.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -17,7 +17,7 @@
   border: 1px solid var(--border);
   color: var(--text-secondary);
   font-family: var(--font-ui);
-  font-size: 14px;
+  font-size: 0.875rem;
   font-weight: 500;
   line-height: 1;
   text-decoration: none;

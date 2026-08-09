@@ -1,5 +1,5 @@
 .page {
-  max-width: 740px;
+  max-width: 46.25rem;
   margin: 0 auto;
   padding-top: 2rem;
   padding-bottom: 4rem;
@@ -7,28 +7,28 @@
 
 .tagline {
   font-family: var(--font-ui);
-  font-size: 14px;
+  font-size: 0.875rem;
   font-weight: 500;
   line-height: 1;
   color: var(--accent);
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  margin-bottom: 8px;
+  margin-bottom: 0.5rem;
   display: block;
 }
 
 .title {
   font-family: var(--font-display);
-  font-size: 32px;
+  font-size: 2rem;
   font-weight: 700;
   line-height: 1.1;
   color: var(--text-primary);
-  margin-bottom: 16px;
+  margin-bottom: 1rem;
 }
 
 .description {
   font-family: var(--font-ui);
-  font-size: 18px;
+  font-size: 1.125rem;
   line-height: 1.6;
   color: var(--text-secondary);
 }
@@ -36,15 +36,15 @@
 .authorsSection {
   display: flex;
   flex-direction: column;
-  gap: 64px;
-  margin-top: 64px;
+  gap: 4rem;
+  margin-top: 4rem;
 }
 
 .authorCard {
   background: var(--bg-surface);
   border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 32px;
+  border-radius: 0.75rem;
+  padding: 2rem;
   transition: all 0.15s ease;
 
   &:hover {
@@ -55,16 +55,16 @@
 .cardContent {
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 2rem;
   align-items: flex-start;
 }
 
 .avatarWrapper {
-  width: 128px;
-  height: 128px;
+  width: 8rem;
+  height: 8rem;
   flex-shrink: 0;
   overflow: hidden;
-  border-radius: 8px;
+  border-radius: 0.5rem;
   background: var(--bg-surface);
 }
 
@@ -86,37 +86,37 @@
 
 .authorName {
   font-family: var(--font-display);
-  font-size: 24px;
+  font-size: 1.5rem;
   font-weight: 600;
   line-height: 1.3;
   color: var(--accent);
-  margin-bottom: 4px;
+  margin-bottom: 0.25rem;
 }
 
 .authorRole {
   font-family: var(--font-ui);
-  font-size: 14px;
+  font-size: 0.875rem;
   font-weight: 500;
   line-height: 1;
   color: var(--text-secondary);
-  margin-bottom: 16px;
+  margin-bottom: 1rem;
 }
 
 .bio {
   font-family: var(--font-ui);
-  font-size: 18px;
+  font-size: 1.125rem;
   line-height: 1.6;
   color: var(--text-primary);
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 1rem;
 }
 
 .socialLinks {
   display: flex;
-  gap: 16px;
-  margin-top: 32px;
-  padding-top: 16px;
+  gap: 1rem;
+  margin-top: 2rem;
+  padding-top: 1rem;
   border-top: 1px solid var(--border);
 }
 
@@ -136,12 +136,12 @@
   }
 
   .title {
-    font-size: 48px;
+    font-size: 3rem;
     letter-spacing: -0.02em;
   }
 
   .description {
-    font-size: 20px;
+    font-size: 1.25rem;
   }
 
   .cardContent {
@@ -149,6 +149,39 @@
   }
 
   .bio {
-    font-size: 20px;
+    font-size: 1.25rem;
+  }
+}
+
+// .page has no horizontal padding at all, so the 740px column runs to the edge
+// on anything narrower than ~780px. Safe to apply on phones too.
+@media screen and (max-width: $breakpoint-md) {
+  .page {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+}
+
+@media screen and (min-width: $breakpoint-sm) and (max-width: $breakpoint-md) {
+  .title {
+    font-size: 2.5rem;
+  }
+
+  .authorsSection {
+    gap: 3rem;
+    margin-top: 3rem;
+  }
+
+  .authorCard {
+    padding: 1.5rem;
+  }
+
+  .cardContent {
+    gap: 1.5rem;
+  }
+
+  .avatarWrapper {
+    width: 6rem;
+    height: 6rem;
   }
 }

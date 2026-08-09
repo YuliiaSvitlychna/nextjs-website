@@ -1,5 +1,5 @@
 .page {
-  max-width: 740px;
+  max-width: 46.25rem;
   margin-left: auto;
   margin-right: auto;
   padding-top: 2rem;
@@ -8,7 +8,7 @@
 
 .heading {
   font-family: var(--font-display);
-  font-size: 48px;
+  font-size: 3rem;
   line-height: 1.1;
   letter-spacing: -0.02em;
   font-weight: 700;
@@ -17,7 +17,7 @@
 }
 
 .card {
-  padding: 16px;
+  padding: 1rem;
   border-radius: 0.75rem;
   border: 1px solid var(--border);
   background-color: var(--bg-surface);
@@ -33,12 +33,17 @@
 .cardInner {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 1rem;
+  min-width: 0;
+}
+
+.cardText {
+  min-width: 0;
 }
 
 .iconBox {
-  width: 48px;
-  height: 48px;
+  width: 3rem;
+  height: 3rem;
   border-radius: 0.5rem;
   display: flex;
   align-items: center;
@@ -62,19 +67,22 @@
 
 .cardLabel {
   font-family: var(--font-ui);
-  font-size: 12px;
+  font-size: 0.75rem;
   font-weight: 500;
   line-height: 1;
   color: var(--text-secondary);
-  margin-bottom: 4px;
+  margin-bottom: 0.25rem;
 }
 
+// Emails are the longest value here and have no natural break points, so let
+// them wrap anywhere instead of pushing past the card edge.
 .cardTitle {
   font-family: var(--font-ui);
-  font-size: 12px;
+  font-size: 0.75rem;
   font-weight: 600;
-  line-height: 1;
+  line-height: 1.3;
   color: var(--text-primary);
+  overflow-wrap: anywhere;
 }
 
 .socialCard {
@@ -95,14 +103,16 @@
   }
 }
 
+// Stacked in a single column: the email card never has enough room for a full
+// address once the grid splits the 46.25rem container into thirds.
 .grid {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 16px;
+  grid-template-columns: 1fr;
+  gap: 1rem;
 }
 
 .imageWrapper {
-  margin-top: 64px;
+  margin-top: 4rem;
   border-radius: 0.75rem;
   overflow: hidden;
   border: 1px solid var(--border);
@@ -130,4 +140,21 @@
   inset: 0;
   background: linear-gradient(to top, var(--bg-base), transparent);
   pointer-events: none;
+}
+
+// This file has no min-width block, so the base rules apply at every width and
+// a plain max-width query is the right lever here.
+@media screen and (max-width: $breakpoint-md) {
+  .page {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+
+  .heading {
+    font-size: 2.5rem;
+  }
+
+  .imageWrapper {
+    margin-top: 3rem;
+  }
 }
